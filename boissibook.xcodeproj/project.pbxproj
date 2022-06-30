@@ -13,6 +13,8 @@
 		ADEBA9BC286E2D8B0083D038 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9AA286E2D890083D038 /* ContentView.swift */; };
 		ADEBA9BD286E2D8B0083D038 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADEBA9AB286E2D8B0083D038 /* Assets.xcassets */; };
 		ADEBA9BE286E2D8B0083D038 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADEBA9AB286E2D8B0083D038 /* Assets.xcassets */; };
+		ADEBA9CE286E39950083D038 /* BooksHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9CD286E39950083D038 /* BooksHome.swift */; };
+		ADEBA9CF286E39950083D038 /* BooksHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9CD286E39950083D038 /* BooksHome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,7 @@
 		ADEBA9B0286E2D8B0083D038 /* boissibook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = boissibook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEBA9B6286E2D8B0083D038 /* boissibook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = boissibook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEBA9B8286E2D8B0083D038 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		ADEBA9CD286E39950083D038 /* BooksHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksHome.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +57,10 @@
 		ADEBA9A8286E2D890083D038 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				ADEBA9C9286E354F0083D038 /* Utilities */,
+				ADEBA9C8286E35330083D038 /* Views */,
 				ADEBA9A9286E2D890083D038 /* boissibookApp.swift */,
-				ADEBA9AA286E2D890083D038 /* ContentView.swift */,
+				ADEBA9C7286E35190083D038 /* Screens */,
 				ADEBA9AB286E2D8B0083D038 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -76,6 +81,29 @@
 				ADEBA9B8286E2D8B0083D038 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		ADEBA9C7286E35190083D038 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				ADEBA9AA286E2D890083D038 /* ContentView.swift */,
+				ADEBA9CD286E39950083D038 /* BooksHome.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		ADEBA9C8286E35330083D038 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ADEBA9C9286E354F0083D038 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +206,7 @@
 			files = (
 				ADEBA9BB286E2D8B0083D038 /* ContentView.swift in Sources */,
 				ADEBA9B9286E2D8B0083D038 /* boissibookApp.swift in Sources */,
+				ADEBA9CE286E39950083D038 /* BooksHome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +216,7 @@
 			files = (
 				ADEBA9BC286E2D8B0083D038 /* ContentView.swift in Sources */,
 				ADEBA9BA286E2D8B0083D038 /* boissibookApp.swift in Sources */,
+				ADEBA9CF286E39950083D038 /* BooksHome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +344,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
@@ -343,6 +374,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
