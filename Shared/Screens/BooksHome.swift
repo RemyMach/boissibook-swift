@@ -27,7 +27,7 @@ struct BooksHome: View {
                             .foregroundColor(.gray)
                             .clipShape(Circle())
                         }
-                    Text("Livres")
+                    Text("Bibliothèque")
                         .font(.system(size:40))
                         .fontWeight(.heavy)
                     Spacer()
@@ -40,6 +40,7 @@ struct BooksHome: View {
                     VStack {
                         Text("Searching for \(searchText)")
                             .searchable(text:$searchText)
+                            .navigationBarTitleDisplayMode(.inline)
                         Spacer()
                     }
                 }
