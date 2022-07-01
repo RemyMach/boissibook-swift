@@ -8,12 +8,41 @@
 import SwiftUI
 
 struct BooksHome: View {
+    let screenWidth = UIScreen.main.bounds.size.width
+    
+    @State private var searchText = ""
+    
     var body: some View {
         ZStack {
             VStack(spacing: 10) {
-                Text("Livres")
-                    .font(.system(size:40))
-                    .fontWeight(.heavy)
+                HStack() {
+                    ZStack {
+                        
+                        Image(systemName: "magnifyingglass")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.gray)
+                        Image(systemName: "circle")
+                            .font(.system(size: 50, weight: .ultraLight))
+                            .foregroundColor(.gray)
+                            .clipShape(Circle())
+                        }
+                    Text("Livres")
+                        .font(.system(size:40))
+                        .fontWeight(.heavy)
+                    Spacer()
+                }
+                .frame(width: (screenWidth * 0.9) )
+                .padding(.bottom, 10)
+                Divider()
+                    .frame(width: (screenWidth * 0.9) )
+                NavigationView {
+                    VStack {
+                        Text("Searching for \(searchText)")
+                            .searchable(text:$searchText)
+                        Spacer()
+                    }
+                }
                 Spacer()
             }
         }
