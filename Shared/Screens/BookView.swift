@@ -7,34 +7,24 @@
 
 import SwiftUI
 
+struct BookElementList {
+    let title: String;
+}
+
 struct BookView: View {
+    
+    let bookElement: BookElementList
+    
     var body: some View {
         ZStack {
-            Image("clean-code")
-                .resizable()
             VStack(alignment: .leading) {
-                VStack(alignment: .leading) {
-                    Text("En détail".uppercased())
-                        .font(.title3)
-                        .bold()
-                        .foregroundColor(.gray)
-                    Text("Clean Code")
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(.white)
-                    Text("Pomme")
-                        .foregroundColor(.white)
-                }
-                .padding(.top, 10)
-                .padding(.leading, 20)
-                Spacer()
                 HStack {
                     Image("clean-code")
                         .resizable()
                         .frame(width: 48, height: 48)
                         .cornerRadius(12)
                     VStack(alignment: .leading) {
-                        Text("Clean Code")
+                        Text(bookElement.title)
                             .bold()
                         Text("Martin Fowler")
                             .font(.caption)
@@ -61,6 +51,6 @@ struct BookView: View {
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        BookView()
+        Text("")
     }
 }

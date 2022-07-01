@@ -12,6 +12,9 @@ struct BooksHome: View {
     
     @State private var searchText = ""
     
+    @State var books = ["Clean Code", "Clean Craft", "Boissinot", "Rust", "Une pomme est jaune", "tu es qui ?", "Australie", "Torture"]
+
+    
     var body: some View {
         ZStack {
             VStack(spacing: 10) {
@@ -41,6 +44,11 @@ struct BooksHome: View {
                         Text("Searching for \(searchText)")
                             .searchable(text:$searchText)
                             .navigationBarTitleDisplayMode(.inline)
+                        List {
+                            ForEach(searchText == "" ? books: books.filter { $0.contains(searchText)}, id: \.self) { book in
+                                BookView(bookElement: BookElementList(title: book))
+                            }
+                        }
                         Spacer()
                     }
                 }
