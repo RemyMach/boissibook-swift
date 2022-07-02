@@ -11,6 +11,7 @@ struct Book : Identifiable {
     let id = UUID()
     let title: String;
     let authors: [String]
+    let imageUrl: String;
 }
 
 struct BooksHome: View {
@@ -58,9 +59,13 @@ struct BooksHome: View {
                     .frame(width: (screenWidth * 0.9) )
                 NavigationView {
                     VStack {
-                        Text("Searching for \(searchText)")
-                            .searchable(text:$searchText)
-                            .navigationBarTitleDisplayMode(.inline)
+                        HStack {
+                            Text("Recherche pour")
+                            Text("\(searchText)")
+                                .foregroundColor(.blue)
+                                .searchable(text:$searchText)
+                                .navigationBarTitleDisplayMode(.inline)
+                        }
                         List {
                             ForEach(searchText == "" ? books: books.filter { $0.title.contains(searchText)}, id: \.id) { book in
                                 BookCellView(book: book)
@@ -71,7 +76,8 @@ struct BooksHome: View {
                             URLSession.shared.getBooks(at: url) { result in
                                 switch result {
                                     case .success(let books):
-                                    self.books = books.map {Book(title: $0.title, authors: $0.authors)}
+                                    self.books = books.map {Book(title: $0.title, authors: $0.authors,
+                                        imageUrl: $0.imgUrl)}
                                         print("on passe bien ici")
                                         print(self.books)
                                         break
