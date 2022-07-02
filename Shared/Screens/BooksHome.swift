@@ -60,29 +60,7 @@ struct BooksHome: View {
                             .navigationBarTitleDisplayMode(.inline)
                         List {
                             ForEach(searchText == "" ? books: books.filter { $0.title.contains(searchText)}, id: \.id) { book in
-                                    HStack {
-                                        Image("clean-code")
-                                            .resizable()
-                                            .frame(width: 48, height: 48)
-                                            .cornerRadius(12)
-                                        VStack(alignment: .leading) {
-                                            Text(book.title)
-                                                .bold()
-                                            Text("Martin Fowler")
-                                                .font(.caption)
-                                                .foregroundColor(.gray)
-                                        }
-                                        Spacer()
-                                        Button("Details".uppercased()) {}
-                                        .font(.system(size: 14, weight: .bold))
-                                        .foregroundColor(.white)
-                                        .padding(.horizontal, 12)
-                                        .padding(.vertical, 6)
-                                        .background(Capsule().foregroundColor(Color(white: 0, opacity: 0.2)))
-
-                                    }
-                                    .padding(16)
-                                    .background(Color.white)
+                                BookCellView(book: book)
                             }
                         }
                         .listStyle(.plain)

@@ -17,6 +17,8 @@
 		ADEBA9CF286E39950083D038 /* BooksHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9CD286E39950083D038 /* BooksHome.swift */; };
 		ADEBA9D1286F9DDB0083D038 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D0286F9DDB0083D038 /* BookView.swift */; };
 		ADEBA9D2286F9DDB0083D038 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D0286F9DDB0083D038 /* BookView.swift */; };
+		ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D328703F640083D038 /* BookCellView.swift */; };
+		ADEBA9D528703F640083D038 /* BookCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D328703F640083D038 /* BookCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,7 @@
 		ADEBA9B8286E2D8B0083D038 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		ADEBA9CD286E39950083D038 /* BooksHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksHome.swift; sourceTree = "<group>"; };
 		ADEBA9D0286F9DDB0083D038 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
+		ADEBA9D328703F640083D038 /* BookCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,7 @@
 				ADEBA9AA286E2D890083D038 /* ContentView.swift */,
 				ADEBA9CD286E39950083D038 /* BooksHome.swift */,
 				ADEBA9D0286F9DDB0083D038 /* BookView.swift */,
+				ADEBA9D328703F640083D038 /* BookCellView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -212,6 +216,7 @@
 				ADEBA9B9286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				ADEBA9CE286E39950083D038 /* BooksHome.swift in Sources */,
 				ADEBA9D1286F9DDB0083D038 /* BookView.swift in Sources */,
+				ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +228,7 @@
 				ADEBA9BA286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				ADEBA9CF286E39950083D038 /* BooksHome.swift in Sources */,
 				ADEBA9D2286F9DDB0083D038 /* BookView.swift in Sources */,
+				ADEBA9D528703F640083D038 /* BookCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
