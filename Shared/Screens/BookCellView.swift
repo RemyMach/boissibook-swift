@@ -20,7 +20,7 @@ struct BookCellView: View {
             VStack(alignment: .leading) {
                 Text(book.title)
                     .bold()
-                Text("Martin Fowler")
+                Text(book.authors.joined(separator: ", "))
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -39,7 +39,10 @@ struct BookCellView: View {
 }
 
 struct BookCellView_Previews: PreviewProvider {
+    //@State static var book: Book = Book(title: "Clean Code")
+
     static var previews: some View {
-        BookCellView(book: Book(title: "Clean Code"))
+        //BookCellView(book: $book)
+        BookCellView(book: Book(title: "Clean Code", authors: ["martin Fowler"]))
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD43001C2870824B005D64B8 /* GetBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43001B2870824B005D64B8 /* GetBooks.swift */; };
+		AD4300212870850E005D64B8 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300202870850E005D64B8 /* Book.swift */; };
 		ADAA56A42870420300A2B960 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A32870420300A2B960 /* Home.swift */; };
 		ADAA56A52870420300A2B960 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A32870420300A2B960 /* Home.swift */; };
 		ADAA56A72870455200A2B960 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A62870455200A2B960 /* CircleView.swift */; };
@@ -30,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD43001B2870824B005D64B8 /* GetBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBooks.swift; sourceTree = "<group>"; };
+		AD4300202870850E005D64B8 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		AD430022287090AD005D64B8 /* boissibook--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "boissibook--iOS--Info.plist"; sourceTree = "<group>"; };
 		ADAA56A32870420300A2B960 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		ADAA56A62870455200A2B960 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		ADAA56AA28704D9000A2B960 /* chimeup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimeup.mp3; path = "../../../Restart-App/Resources/Sounds/chimeup.mp3"; sourceTree = "<group>"; };
@@ -63,6 +68,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD43001928708227005D64B8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AD43001A28708235005D64B8 /* Books */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AD43001A28708235005D64B8 /* Books */ = {
+			isa = PBXGroup;
+			children = (
+				AD43001D287084B8005D64B8 /* Dto */,
+				AD43001B2870824B005D64B8 /* GetBooks.swift */,
+			);
+			path = Books;
+			sourceTree = "<group>";
+		};
+		AD43001D287084B8005D64B8 /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				AD4300202870850E005D64B8 /* Book.swift */,
+			);
+			path = Dto;
+			sourceTree = "<group>";
+		};
 		ADAA56A928704D2C00A2B960 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +104,7 @@
 		ADEBA9A3286E2D890083D038 = {
 			isa = PBXGroup;
 			children = (
+				AD430022287090AD005D64B8 /* boissibook--iOS--Info.plist */,
 				ADEBA9A8286E2D890083D038 /* Shared */,
 				ADEBA9B7286E2D8B0083D038 /* macOS */,
 				ADEBA9B1286E2D8B0083D038 /* Products */,
@@ -83,6 +114,7 @@
 		ADEBA9A8286E2D890083D038 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				AD43001928708227005D64B8 /* Services */,
 				ADAA56A928704D2C00A2B960 /* Sounds */,
 				ADEBA9C9286E354F0083D038 /* Utilities */,
 				ADEBA9C8286E35330083D038 /* Views */,
@@ -241,10 +273,12 @@
 				ADEBA9BB286E2D8B0083D038 /* ContentView.swift in Sources */,
 				ADEBA9B9286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				ADEBA9CE286E39950083D038 /* BooksHome.swift in Sources */,
+				AD43001C2870824B005D64B8 /* GetBooks.swift in Sources */,
 				ADAA56AE28704DDB00A2B960 /* AudioPlayer.swift in Sources */,
 				ADEBA9D1286F9DDB0083D038 /* BookView.swift in Sources */,
 				ADAA56A42870420300A2B960 /* Home.swift in Sources */,
 				ADAA56A72870455200A2B960 /* CircleView.swift in Sources */,
+				AD4300212870850E005D64B8 /* Book.swift in Sources */,
 				ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +419,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "boissibook--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -415,6 +450,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "boissibook--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

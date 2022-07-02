@@ -15,7 +15,7 @@ struct Home: View {
     @State private var indicatorOpacity: Double = 1.0
     @State private var buttonOffset: CGFloat = 0
     @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
-    @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    @Binding var isOnboardingViewActive: Bool;
     
     let hapticFeedback = UINotificationFeedbackGenerator()
     
@@ -187,7 +187,9 @@ struct Home: View {
 }
 
 struct Home_Previews: PreviewProvider {
+    @State static var isOnboardingViewActive: Bool = true
+
     static var previews: some View {
-        Home()
+        Home(isOnboardingViewActive: $isOnboardingViewActive)
     }
 }

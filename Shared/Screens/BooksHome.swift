@@ -10,14 +10,18 @@ import SwiftUI
 struct Book : Identifiable {
     let id = UUID()
     let title: String;
+    let authors: [String]
 }
 
 struct BooksHome: View {
+    let url = URL(string: "http://boissibook.nospy.fr/books")!
     let screenWidth = UIScreen.main.bounds.size.width
     
     @State private var searchText = ""
     
-    @State var books = [
+    @State var books: [Book] = []
+    
+    /*@State var books = [
         Book(title: "Clean Code"),
         Book(title: "Clean Craft"),
         Book(title: "Boissinot") ,
@@ -26,7 +30,7 @@ struct BooksHome: View {
         Book(title: "tu es qui ?"),
         Book(title: "Australie"),
         Book(title: "Torture")
-    ]
+    ]*/
 
     
     var body: some View {
@@ -63,6 +67,21 @@ struct BooksHome: View {
                             }
                         }
                         .listStyle(.plain)
+                        .onAppear {
+                            URLSession.shared.getBooks(at: url) { result in
+                                switch result {
+                                    case .success(let books):
+                                    self.books = books.map {Book(title: $0.title, authors: $0.authors)}
+                                        print("on passe bien ici")
+                                        print(self.books)
+                                        break
+                                    case .failure(let error):
+                                        print("error when get books")
+                                        print(error)
+                                        break
+                              }
+                            }
+                        }
                     }
                 }
                 Spacer()
