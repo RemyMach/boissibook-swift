@@ -34,7 +34,6 @@ struct BooksHome: View {
             VStack(spacing: 10) {
                 HStack() {
                     ZStack {
-                        
                         Image(systemName: "magnifyingglass")
                             .resizable()
                             .frame(width: 20, height: 20)
