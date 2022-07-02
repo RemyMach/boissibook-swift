@@ -7,12 +7,26 @@
 
 import SwiftUI
 
+struct Book : Identifiable {
+    let id = UUID()
+    let title: String;
+}
+
 struct BooksHome: View {
     let screenWidth = UIScreen.main.bounds.size.width
     
     @State private var searchText = ""
     
-    @State var books = ["Clean Code", "Clean Craft", "Boissinot", "Rust", "Une pomme est jaune", "tu es qui ?", "Australie", "Torture"]
+    @State var books = [
+        Book(title: "Clean Code"),
+        Book(title: "Clean Craft"),
+        Book(title: "Boissinot") ,
+        Book(title: "Rust"),
+        Book(title: "Une pomme est jaune"),
+        Book(title: "tu es qui ?"),
+        Book(title: "Australie"),
+        Book(title: "Torture")
+    ]
 
     
     var body: some View {
@@ -44,12 +58,30 @@ struct BooksHome: View {
                         Text("Searching for \(searchText)")
                             .searchable(text:$searchText)
                             .navigationBarTitleDisplayMode(.inline)
-                        List {
-                            ForEach(searchText == "" ? books: books.filter { $0.contains(searchText)}, id: \.self) { book in
-                                BookView(bookElement: BookElementList(title: book))
+                        List(books) { book in
+                                HStack {
+                                    Image("clean-code")
+                                        .resizable()
+                                        .frame(width: 48, height: 48)
+                                        .cornerRadius(12)
+                                    VStack(alignment: .leading) {
+                                        Text(book.title)
+                                            .bold()
+                                        Text("Martin Fowler")
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                    }
+                                    Spacer()
+                                    Button("Details".uppercased()) {}
+                                    .font(.system(size: 14, weight: .bold))
+                                    .padding(.horizontal, 8)
+                                    .background(Capsule().foregroundColor(Color(white: 0, opacity: 0.2)))
+
+                                }
+                                .padding(16)
+                                .background(Color.white)
                             }
-                        }
-                        Spacer()
+                        .listStyle(.plain)
                     }
                 }
                 Spacer()
