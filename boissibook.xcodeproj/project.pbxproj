@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		AD43001C2870824B005D64B8 /* GetBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43001B2870824B005D64B8 /* GetBooks.swift */; };
 		AD4300212870850E005D64B8 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300202870850E005D64B8 /* Book.swift */; };
+		AD4300242871BB37005D64B8 /* TabMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300232871BB37005D64B8 /* TabMenu.swift */; };
+		AD4300252871BB37005D64B8 /* TabMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300232871BB37005D64B8 /* TabMenu.swift */; };
+		AD4300272871BCC4005D64B8 /* SearchBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300262871BCC4005D64B8 /* SearchBook.swift */; };
+		AD4300282871BCC4005D64B8 /* SearchBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300262871BCC4005D64B8 /* SearchBook.swift */; };
+		AD43002A2871BE5E005D64B8 /* SearchBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300292871BE5E005D64B8 /* SearchBooks.swift */; };
+		AD43002B2871BE5E005D64B8 /* SearchBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300292871BE5E005D64B8 /* SearchBooks.swift */; };
+		AD43002D2871C3E5005D64B8 /* SearchBookDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43002C2871C3E5005D64B8 /* SearchBookDto.swift */; };
+		AD43002E2871C3E5005D64B8 /* SearchBookDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43002C2871C3E5005D64B8 /* SearchBookDto.swift */; };
 		ADAA56A42870420300A2B960 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A32870420300A2B960 /* Home.swift */; };
 		ADAA56A52870420300A2B960 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A32870420300A2B960 /* Home.swift */; };
 		ADAA56A72870455200A2B960 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A62870455200A2B960 /* CircleView.swift */; };
@@ -35,6 +43,10 @@
 		AD43001B2870824B005D64B8 /* GetBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBooks.swift; sourceTree = "<group>"; };
 		AD4300202870850E005D64B8 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		AD430022287090AD005D64B8 /* boissibook--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "boissibook--iOS--Info.plist"; sourceTree = "<group>"; };
+		AD4300232871BB37005D64B8 /* TabMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenu.swift; sourceTree = "<group>"; };
+		AD4300262871BCC4005D64B8 /* SearchBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBook.swift; sourceTree = "<group>"; };
+		AD4300292871BE5E005D64B8 /* SearchBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBooks.swift; sourceTree = "<group>"; };
+		AD43002C2871C3E5005D64B8 /* SearchBookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookDto.swift; sourceTree = "<group>"; };
 		ADAA56A32870420300A2B960 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		ADAA56A62870455200A2B960 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		ADAA56AA28704D9000A2B960 /* chimeup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimeup.mp3; path = "../../../Restart-App/Resources/Sounds/chimeup.mp3"; sourceTree = "<group>"; };
@@ -81,6 +93,7 @@
 			children = (
 				AD43001D287084B8005D64B8 /* Dto */,
 				AD43001B2870824B005D64B8 /* GetBooks.swift */,
+				AD4300292871BE5E005D64B8 /* SearchBooks.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -89,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				AD4300202870850E005D64B8 /* Book.swift */,
+				AD43002C2871C3E5005D64B8 /* SearchBookDto.swift */,
 			);
 			path = Dto;
 			sourceTree = "<group>";
@@ -148,6 +162,8 @@
 				ADEBA9AA286E2D890083D038 /* ContentView.swift */,
 				ADEBA9CD286E39950083D038 /* BooksHome.swift */,
 				ADAA56A32870420300A2B960 /* Home.swift */,
+				AD4300232871BB37005D64B8 /* TabMenu.swift */,
+				AD4300262871BCC4005D64B8 /* SearchBook.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -270,16 +286,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD4300272871BCC4005D64B8 /* SearchBook.swift in Sources */,
 				ADEBA9BB286E2D8B0083D038 /* ContentView.swift in Sources */,
 				ADEBA9B9286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				ADEBA9CE286E39950083D038 /* BooksHome.swift in Sources */,
+				AD43002A2871BE5E005D64B8 /* SearchBooks.swift in Sources */,
 				AD43001C2870824B005D64B8 /* GetBooks.swift in Sources */,
+				AD43002D2871C3E5005D64B8 /* SearchBookDto.swift in Sources */,
 				ADAA56AE28704DDB00A2B960 /* AudioPlayer.swift in Sources */,
 				ADEBA9D1286F9DDB0083D038 /* BookView.swift in Sources */,
 				ADAA56A42870420300A2B960 /* Home.swift in Sources */,
 				ADAA56A72870455200A2B960 /* CircleView.swift in Sources */,
 				AD4300212870850E005D64B8 /* Book.swift in Sources */,
 				ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */,
+				AD4300242871BB37005D64B8 /* TabMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +309,11 @@
 			files = (
 				ADEBA9BC286E2D8B0083D038 /* ContentView.swift in Sources */,
 				ADEBA9BA286E2D8B0083D038 /* boissibookApp.swift in Sources */,
+				AD43002B2871BE5E005D64B8 /* SearchBooks.swift in Sources */,
+				AD4300282871BCC4005D64B8 /* SearchBook.swift in Sources */,
+				AD4300252871BB37005D64B8 /* TabMenu.swift in Sources */,
 				ADEBA9CF286E39950083D038 /* BooksHome.swift in Sources */,
+				AD43002E2871C3E5005D64B8 /* SearchBookDto.swift in Sources */,
 				ADAA56AF28704DDB00A2B960 /* AudioPlayer.swift in Sources */,
 				ADEBA9D2286F9DDB0083D038 /* BookView.swift in Sources */,
 				ADAA56A52870420300A2B960 /* Home.swift in Sources */,

@@ -1,19 +1,18 @@
 //
-//  Book.swift
-//  boissibook (iOS)
+//  SearchBookDto.swift
+//  boissibook
 //
-//  Created by Rémy Machavoine on 02/07/2022.
+//  Created by Rémy Machavoine on 03/07/2022.
 //
 
 import Foundation
 
-struct GetBooksDtoRequest: Decodable {
-    let books: [BookDto]
+struct SearchBooksDtoRequest: Decodable {
+    let books: [SearchBookDto]
 }
 
-struct BookDto: Decodable {
+struct SearchBookDto: Decodable {
     let id: String
-    let apiId: String
     let title: String
     let authors: Optional<[String]>
     let publisher: Optional<String>
@@ -24,4 +23,3 @@ struct BookDto: Decodable {
     let imgUrl: Optional<String>
     let pages: Int
 }
-

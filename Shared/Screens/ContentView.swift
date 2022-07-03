@@ -14,7 +14,7 @@ struct ContentView: View {
             Home(isOnboardingViewActive: $isOnboardingViewActive)
             
         }else {
-            BooksHome()
+            TabMenu()
         }
     }
 }

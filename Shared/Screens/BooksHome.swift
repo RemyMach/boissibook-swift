@@ -39,7 +39,7 @@ struct BooksHome: View {
             VStack(spacing: 10) {
                 HStack() {
                     ZStack {
-                        Image(systemName: "magnifyingglass")
+                        Image(systemName: "house")
                             .resizable()
                             .frame(width: 20, height: 20)
                             .foregroundColor(.gray)
@@ -76,8 +76,8 @@ struct BooksHome: View {
                             URLSession.shared.getBooks(at: url) { result in
                                 switch result {
                                     case .success(let books):
-                                    self.books = books.map {Book(title: $0.title, authors: $0.authors,
-                                        imageUrl: $0.imgUrl)}
+                                        self.books = books.map {Book(title: $0.title, authors: $0.authors ?? ["non connu"],
+                                        imageUrl: $0.imgUrl ?? "https://complianz.io/wp-content/uploads/2019/03/placeholder-705x474.jpg")}
                                         print("on passe bien ici")
                                         print(self.books)
                                         break
