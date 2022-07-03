@@ -147,8 +147,6 @@
 			children = (
 				ADEBA9AA286E2D890083D038 /* ContentView.swift */,
 				ADEBA9CD286E39950083D038 /* BooksHome.swift */,
-				ADEBA9D0286F9DDB0083D038 /* BookView.swift */,
-				ADEBA9D328703F640083D038 /* BookCellView.swift */,
 				ADAA56A32870420300A2B960 /* Home.swift */,
 			);
 			path = Screens;
@@ -157,6 +155,8 @@
 		ADEBA9C8286E35330083D038 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ADEBA9D0286F9DDB0083D038 /* BookView.swift */,
+				ADEBA9D328703F640083D038 /* BookCellView.swift */,
 				ADAA56A62870455200A2B960 /* CircleView.swift */,
 			);
 			path = Views;
