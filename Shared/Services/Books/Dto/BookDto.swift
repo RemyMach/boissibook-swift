@@ -1,8 +1,8 @@
 //
-//  Book.swift
-//  boissibook (iOS)
+//  BookDto.swift
+//  boissibook
 //
-//  Created by Rémy Machavoine on 02/07/2022.
+//  Created by Rémy Machavoine on 04/07/2022.
 //
 
 import Foundation
@@ -24,4 +24,3 @@ struct BookDto: Decodable {
     let imgUrl: Optional<String>
     let pages: Int
 }
-

@@ -62,7 +62,8 @@ struct SearchBook: View {
                                                 case .success(let books):
                                                 self.books = books.map {Book(
                                                     id: $0.id ,title: $0.title, authors: $0.authors ?? ["non connu"],
-                                                    imageUrl: $0.imgUrl ?? "https://complianz.io/wp-content/uploads/2019/03/placeholder-705x474.jpg")}
+                                                    imageUrl: $0.imgUrl ?? "https://complianz.io/wp-content/uploads/2019/03/placeholder-705x474.jpg",
+                                                    description: $0.description)}
                                                     print("success search books")
                                                     print(self.books)
                                                     break
