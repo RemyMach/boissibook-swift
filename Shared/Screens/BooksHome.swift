@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Book : Identifiable {
-    let id = UUID()
+    let id: String;
     let title: String;
     let authors: [String]
     let imageUrl: String;
@@ -76,7 +76,9 @@ struct BooksHome: View {
                             URLSession.shared.getBooks(at: url) { result in
                                 switch result {
                                     case .success(let books):
-                                        self.books = books.map {Book(title: $0.title, authors: $0.authors ?? ["non connu"],
+                                        self.books = books.map {Book(
+                                            id: $0.apiId,
+                                            title: $0.title, authors: $0.authors ?? ["non connu"],
                                         imageUrl: $0.imgUrl ?? "https://complianz.io/wp-content/uploads/2019/03/placeholder-705x474.jpg")}
                                         print("on passe bien ici")
                                         print(self.books)

@@ -60,7 +60,8 @@ struct SearchBook: View {
                                         URLSession.shared.searchBooks(at: urlComponents.url!) { result in
                                             switch result {
                                                 case .success(let books):
-                                                self.books = books.map {Book(title: $0.title, authors: $0.authors ?? ["non connu"],
+                                                self.books = books.map {Book(
+                                                    id: $0.id ,title: $0.title, authors: $0.authors ?? ["non connu"],
                                                     imageUrl: $0.imgUrl ?? "https://complianz.io/wp-content/uploads/2019/03/placeholder-705x474.jpg")}
                                                     print("success search books")
                                                     print(self.books)
@@ -77,7 +78,7 @@ struct SearchBook: View {
                                 .navigationBarTitleDisplayMode(.inline)
                         }
                         List(books) { book in
-                            BookCellView(book: book)
+                            BookCellViewAdd(book: book)
                         }
                         .listStyle(.plain)
                     }

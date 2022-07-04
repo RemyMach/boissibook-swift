@@ -1,14 +1,13 @@
 //
-//  BookCellView.swift
+//  BookCellViewAdd.swift
 //  boissibook
 //
-//  Created by Rémy Machavoine on 02/07/2022.
+//  Created by Rémy Machavoine on 04/07/2022.
 //
 
 import SwiftUI
 
-struct BookCellView: View {
-    
+struct BookCellViewAdd: View {
     let book: Book;
     
     var body: some View {
@@ -31,9 +30,28 @@ struct BookCellView: View {
                     .font(.caption)
                     .foregroundColor(.gray)
             }
+            .padding(.horizontal, 12)
             Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundColor(.gray)
+            Button(action: {
+                print("j'ai cliqué")
+                URLSession.shared.addBooksV2(withId:book.id) { result in
+                    switch result {
+                        case .success(let message):
+                            print("book added with success")
+                            break
+                        case .failure(let error):
+                            print("error when add book")
+                            print(error)
+                            break
+                    }
+                }
+            }) {
+                Image(systemName: "plus.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 25, height: 25)
+                    .foregroundColor(.blue)
+            }
             /*Button("Details".uppercased()) {}
             .font(.system(size: 14, weight: .bold))
             .foregroundColor(.white)
@@ -47,12 +65,11 @@ struct BookCellView: View {
     }
 }
 
-struct BookCellView_Previews: PreviewProvider {
-    //@State static var book: Book = Book(title: "Clean Code")
-
+struct BookCellViewAdd_Previews: PreviewProvider {
     static var previews: some View {
-        //BookCellView(book: $book)
-        BookCellView(book: Book(
+        BookCellViewAdd(book: Book(
             id: "1", title: "Clean Code", authors: ["martin Fowler"], imageUrl: "http://books.google.com/books/content?id=4JvFjE4dlGMC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72a0sty87mX89qFzThmMep58LL-21RmYul2uCeEmvFvdUF_lUmgh2uWGFi1TSSUvLSxRQ94YzlGimUzKMFIlHAzryMchKmYJOpdYtC6atb9qHx5VnQcBLWkzWxLQfbwDJO73Osk&source=gbs_api"))
     }
 }
+
+

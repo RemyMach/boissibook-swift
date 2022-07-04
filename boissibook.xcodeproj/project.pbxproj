@@ -25,6 +25,10 @@
 		ADAA56AC28704D9000A2B960 /* chimeup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ADAA56AA28704D9000A2B960 /* chimeup.mp3 */; };
 		ADAA56AE28704DDB00A2B960 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56AD28704DDB00A2B960 /* AudioPlayer.swift */; };
 		ADAA56AF28704DDB00A2B960 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56AD28704DDB00A2B960 /* AudioPlayer.swift */; };
+		ADC20A3B2872BDC800FF7206 /* BookCellViewAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC20A3A2872BDC800FF7206 /* BookCellViewAdd.swift */; };
+		ADC20A3C2872BDC800FF7206 /* BookCellViewAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC20A3A2872BDC800FF7206 /* BookCellViewAdd.swift */; };
+		ADC20A3E2872C1D200FF7206 /* AddBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC20A3D2872C1D200FF7206 /* AddBook.swift */; };
+		ADC20A3F2872C1D200FF7206 /* AddBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC20A3D2872C1D200FF7206 /* AddBook.swift */; };
 		ADEBA9B9286E2D8B0083D038 /* boissibookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9A9286E2D890083D038 /* boissibookApp.swift */; };
 		ADEBA9BA286E2D8B0083D038 /* boissibookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9A9286E2D890083D038 /* boissibookApp.swift */; };
 		ADEBA9BB286E2D8B0083D038 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9AA286E2D890083D038 /* ContentView.swift */; };
@@ -51,6 +55,8 @@
 		ADAA56A62870455200A2B960 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		ADAA56AA28704D9000A2B960 /* chimeup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimeup.mp3; path = "../../../Restart-App/Resources/Sounds/chimeup.mp3"; sourceTree = "<group>"; };
 		ADAA56AD28704DDB00A2B960 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		ADC20A3A2872BDC800FF7206 /* BookCellViewAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellViewAdd.swift; sourceTree = "<group>"; };
+		ADC20A3D2872C1D200FF7206 /* AddBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBook.swift; sourceTree = "<group>"; };
 		ADEBA9A9286E2D890083D038 /* boissibookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = boissibookApp.swift; sourceTree = "<group>"; };
 		ADEBA9AA286E2D890083D038 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ADEBA9AB286E2D8B0083D038 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 				AD43001D287084B8005D64B8 /* Dto */,
 				AD43001B2870824B005D64B8 /* GetBooks.swift */,
 				AD4300292871BE5E005D64B8 /* SearchBooks.swift */,
+				ADC20A3D2872C1D200FF7206 /* AddBook.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -174,6 +181,7 @@
 				ADEBA9D0286F9DDB0083D038 /* BookView.swift */,
 				ADEBA9D328703F640083D038 /* BookCellView.swift */,
 				ADAA56A62870455200A2B960 /* CircleView.swift */,
+				ADC20A3A2872BDC800FF7206 /* BookCellViewAdd.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,10 +301,12 @@
 				AD43002A2871BE5E005D64B8 /* SearchBooks.swift in Sources */,
 				AD43001C2870824B005D64B8 /* GetBooks.swift in Sources */,
 				AD43002D2871C3E5005D64B8 /* SearchBookDto.swift in Sources */,
+				ADC20A3B2872BDC800FF7206 /* BookCellViewAdd.swift in Sources */,
 				ADAA56AE28704DDB00A2B960 /* AudioPlayer.swift in Sources */,
 				ADEBA9D1286F9DDB0083D038 /* BookView.swift in Sources */,
 				ADAA56A42870420300A2B960 /* Home.swift in Sources */,
 				ADAA56A72870455200A2B960 /* CircleView.swift in Sources */,
+				ADC20A3E2872C1D200FF7206 /* AddBook.swift in Sources */,
 				AD4300212870850E005D64B8 /* Book.swift in Sources */,
 				ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */,
 				AD4300242871BB37005D64B8 /* TabMenu.swift in Sources */,
@@ -308,6 +318,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADEBA9BC286E2D8B0083D038 /* ContentView.swift in Sources */,
+				ADC20A3C2872BDC800FF7206 /* BookCellViewAdd.swift in Sources */,
+				ADC20A3F2872C1D200FF7206 /* AddBook.swift in Sources */,
 				ADEBA9BA286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				AD43002B2871BE5E005D64B8 /* SearchBooks.swift in Sources */,
 				AD4300282871BCC4005D64B8 /* SearchBook.swift in Sources */,
