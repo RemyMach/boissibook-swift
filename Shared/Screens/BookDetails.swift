@@ -17,53 +17,59 @@ struct BookDetails: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 10) {
-                HStack() {
-                    ZStack {
-                        Image(systemName:"book.circle.fill")
-                            .font(.system(size: 50, weight: .ultraLight))
-                            .foregroundColor(.gray)
-                            .clipShape(Circle())
-                        }
-                    VStack {
-                        HStack {
-                            Text(book.title)
-                                .font(.system(size:25))
-                                .fontWeight(.heavy)
-                            Spacer()
-                        }
-                        HStack() {
-                            Text("by \(book.authors.joined(separator: ", "))")
+            ScrollView {
+                VStack(spacing: 10) {
+                    HStack() {
+                        ZStack {
+                            Image(systemName:"book.circle.fill")
+                                .font(.system(size: 50, weight: .ultraLight))
                                 .foregroundColor(.gray)
-                            Spacer()
+                                .clipShape(Circle())
+                            }
+                        VStack {
+                            HStack {
+                                Text(book.title)
+                                    .font(.system(size:25))
+                                    .fontWeight(.heavy)
+                                Spacer()
+                            }
+                            HStack() {
+                                Text("par \(book.authors.joined(separator: ", "))")
+                                    .foregroundColor(.gray)
+                                Spacer()
+                            }
                         }
+                        Spacer()
                     }
-                    Spacer()
-                }
-                .frame(width: (screenWidth * 0.9) )
-                .padding(.bottom, 10)
-                Divider()
                     .frame(width: (screenWidth * 0.9) )
-                Spacer()
-                AsyncImage(url: URL(string: book.imageUrl)) { image in
-                    image
-                        .resizable()
-                        .frame(width: 48, height: 48)
-                        .cornerRadius(12)
-                } placeholder: {
-                    Image("clean-code")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: (screenWidth * 0.8))
+                    .padding(.bottom, 10)
+                    Divider()
+                        .frame(width: (screenWidth * 0.9) )
+                    Spacer()
+                    AsyncImage(url: URL(string: book.imageUrl)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: (screenHeight * 0.4))
+                            .cornerRadius(12)
+                    } placeholder: {
+                        Image("clean-code")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: (screenHeight * 0.4))
+                    }
+                    Text(book.description)
+                        .font(.system(size: 14, weight: .light))
+                        .frame(width: (screenWidth * 0.9) )
+                    Button("Ouvrir") {}
+                        .buttonStyle(.bordered)
+                        .buttonBorderShape(.roundedRectangle(radius: 20))
+                        .frame(height: 48)
+                        .foregroundColor(.blue)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        
                 }
-                Text(book.description)
-                Button("Ouvrir") {}
-                    .frame(width: 48, height: 48)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(Capsule().foregroundColor(Color(red: 0.0, green: 0.0, blue: 200.0, opacity: 0.2)))
-                Spacer()
             }
         }
     }

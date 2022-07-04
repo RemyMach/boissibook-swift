@@ -50,9 +50,12 @@ struct BooksHome: View {
                         }
                         List {
                             ForEach(searchText == "" ? books: books.filter { $0.title.contains(searchText)}, id: \.id) { book in
-                                BookCellView(book: book)
-                                NavigationLink("description", destination: BookDetails(book: book))
+                                NavigationLink(destination: BookDetails(book: book)) {
+                                    BookCellView(book: book)
                                 }
+                                    .accentColor(.black)
+                                }
+                                
                             }
                         }
                         .listStyle(.plain)

@@ -32,8 +32,6 @@ struct BookCellView: View {
                     .foregroundColor(.gray)
             }
             Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundColor(.gray)
             /*Button("Details".uppercased()) {}
             .font(.system(size: 14, weight: .bold))
             .foregroundColor(.white)
