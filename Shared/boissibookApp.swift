@@ -9,9 +9,23 @@ import SwiftUI
 
 @main
 struct boissibookApp: App {
+    
+    @State var message: String? = nil
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                ContentView()
+                if let message = message {
+                    Text(message)
+                        .transition(.slide)
+                }
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                    //message = "yououyoyuy"
+                }
+            }
         }
     }
 }

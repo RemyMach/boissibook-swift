@@ -15,6 +15,8 @@ struct SearchBook: View {
     
     @State private var searchText = ""
     
+    @State private var requestIsLoading: Bool = false;
+    
     @State var books: [Book] = []
     
     var body: some View {
