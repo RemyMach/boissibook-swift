@@ -21,72 +21,53 @@ struct SearchBook: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 10) {
-                HStack() {
-                    ZStack {
-                        Image(systemName: "magnifyingglass")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.gray)
-                        Image(systemName: "circle")
-                            .font(.system(size: 50, weight: .ultraLight))
-                            .foregroundColor(.gray)
-                            .clipShape(Circle())
-                        }
-                    Text("Rechercher")
-                        .font(.system(size:40))
-                        .fontWeight(.heavy)
-                    Spacer()
-                }
-                .frame(width: (screenWidth * 0.9) )
-                .padding(.bottom, 10)
-                Divider()
-                    .frame(width: (screenWidth * 0.9) )
-                NavigationView {
-                    VStack {
-                        HStack {
-                            Text("Recherche pour")
-                            Text("\(searchText)")
-                                .foregroundColor(.blue)
-                                .searchable(text:$searchText)
-                                .onChange(of: searchText) { newValue in
-                                    if(newValue.count > 3) {
-                                        var urlComponents = URLComponents()
-                                        urlComponents.scheme = "http"
-                                        urlComponents.host = "boissibook.nospy.fr"
-                                        urlComponents.path = "/book-search"
-                                        urlComponents.queryItems = [
-                                            URLQueryItem(name: "searchQuery", value: newValue)
-                                        ]
-                                        //let urlModify  = URL(string: "\(url)?searchQuery=\(newValue)")!
-                                        URLSession.shared.searchBooks(at: urlComponents.url!) { result in
-                                            switch result {
-                                                case .success(let books):
-                                                self.books = books.map {Book(
-                                                    id: $0.id ,title: $0.title, authors: $0.authors ?? ["non connu"],
-                                                    imageUrl: $0.imgUrl ?? "https://complianz.io/wp-content/uploads/2019/03/placeholder-705x474.jpg",
-                                                    description: $0.description)}
-                                                    print("success search books")
-                                                    print(self.books)
-                                                    break
-                                                case .failure(let error):
-                                                print("error search books -> \(String(describing: urlComponents.url))")
-                                                    print(error)
-                                                    break
-                                          }
-                                        }
-                                    }
-                                
-                                }
-                                .navigationBarTitleDisplayMode(.inline)
-                        }
-                        List(books) { book in
-                            BookCellViewAdd(book: book)
-                        }
-                        .listStyle(.plain)
+            NavigationView {
+                VStack {
+                    HStack {
+                        Spacer()
                     }
-                }
-                Spacer()
+                    List(books) { book in
+                        BookCellViewAdd(book: book)
+                    }
+                    .listStyle(.plain)
+                }.searchable(text:$searchText)
+                    .navigationTitle("Rechercher")
+                    .navigationBarTitleDisplayMode(.large)
+                    .onChange(of: searchText) { newValue in
+                        if(newValue.count > 3) {
+                            var urlComponents = URLComponents()
+                            urlComponents.scheme = "http"
+                            urlComponents.host = "boissibook.nospy.fr"
+                            urlComponents.path = "/book-search"
+                            urlComponents.queryItems = [
+                                URLQueryItem(name: "searchQuery", value: newValue)
+                            ]
+                            self.requestIsLoading = true
+                            URLSession.shared.searchBooks(at: urlComponents.url!) { result in
+                                switch result {
+                                    case .success(let books):
+                                        self.books = books.map {Book(
+                                            id: $0.id ,title: $0.title, authors: $0.authors ?? ["non connu"],
+                                            imageUrl: $0.imgUrl ?? "https://complianz.io/wp-content/uploads/2019/03/placeholder-705x474.jpg",
+                                            description: $0.description)}
+                                        print("success search books")
+                                        print(self.books)
+                                        self.requestIsLoading = false
+                                        break
+                                    case .failure(let error):
+                                    print("error search books -> \(String(describing: urlComponents.url))")
+                                        print(error)
+                                        self.requestIsLoading = false
+                                        break
+                              }
+                            }
+                        }
+                    
+                    }
+            }
+            Spacer()
+            if (self.requestIsLoading) {
+                LoadingView()
             }
         }
     }
