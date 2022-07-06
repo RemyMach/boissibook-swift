@@ -23,6 +23,13 @@ struct SearchBook: View {
         ZStack {
             NavigationView {
                 VStack {
+                    if (self.requestIsLoading) {
+                        HStack {
+                            Spacer()
+                            LoadingView()
+                            Spacer()
+                        }
+                    }
                     HStack {
                         Spacer()
                     }
@@ -66,9 +73,6 @@ struct SearchBook: View {
                     }
             }
             Spacer()
-            if (self.requestIsLoading) {
-                LoadingView()
-            }
         }
     }
 }
