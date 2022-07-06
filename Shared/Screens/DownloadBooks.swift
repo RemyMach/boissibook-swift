@@ -19,6 +19,9 @@ struct DownloadBooks: View {
     
     let screenWidth = UIScreen.main.bounds.size.width
     
+    @State var detailsWantedBook: Book? = nil
+    @State var detailsWanted = false
+
     init() {
         do {
             let booksDecoded = try JSONDecoder().decode([Book].self, from: booksStorage)
@@ -33,44 +36,35 @@ struct DownloadBooks: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    /*HStack() {
-                        VStack {
-                            HStack {
-                                Text("Livres disponibles")
-                                    .font(.system(size:25))
-                                    .fontWeight(.heavy)
-                                Spacer()
-                            }
-                            HStack() {
-                                Text("à la lecture")
-                                    .foregroundColor(.gray)
-                                Spacer()
-                            }
-                            Spacer()
-                        }
-                        Spacer()
-                    }
-                    .frame(width: (screenWidth * 0.9) )
-                    .padding(.bottom, 10)
-                    Divider()
-                        .frame(width: (screenWidth * 0.9) )
-                    Spacer()*/
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(books, id: \.id) { book in
-                            NavigationLink(destination: BookDetails(book: book)) {
+                            //NavigationLink(destination: BookDetails(book: book)) {
                                     VStack {
                                         ZStack {
                                             VStack {
                                                 HStack {
                                                     Spacer()
-                                                    Image(systemName: "ellipsis")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: 14, height: 14, alignment: .leading)
-                                                        .padding(.horizontal, 15)
-                                                        .rotationEffect(.degrees(90))
-                                                        .foregroundColor(.gray)
+                                                    Menu {
+                                                        Button("Details") {
+                                                            detailsWantedBook = book
+                                                            detailsWanted = true
+                                                        }
+                                                    } label: {
+                                                        Image(systemName: "ellipsis")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(width: 10, height: 10, alignment: .leading)
+                                                            .padding(.horizontal, 15)
+                                                            .rotationEffect(.degrees(90))
+                                                            .foregroundColor(.gray)
+                                                    }
                                                 }
+                                                if let book = detailsWantedBook {
+                                                    NavigationLink(destination: BookDetails(book: book), isActive: $detailsWanted) {
+                                                        EmptyView()
+                                                    }
+                                                }
+            
                                                 Spacer()
                                             }
                                             AsyncImage(url: URL(string: book.imageUrl)) { image in
@@ -87,39 +81,37 @@ struct DownloadBooks: View {
                                             }
                                             .aspectRatio(4/3, contentMode: .fill)
                                         }
-                                       
-                                        ZStack {
-                                            Text(book.title)
-                                                .font(.system(size: 10, weight: .bold))
-                                                .minimumScaleFactor(0.90)
-                                                .allowsTightening(true)
-                                                .lineLimit(1)
-                                                .padding(.horizontal, 30)
-                                            HStack {
-                                                Spacer()
-                                                Image(systemName: "ellipsis")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 14, height: 14, alignment: .leading)
-                                                    .padding(.horizontal, 15)
-                                            }
-                                        }
+
+                                        Text(book.title)
+                                            .font(.system(size: 15, weight: .bold))
+                                            .minimumScaleFactor(0.90)
+                                            .allowsTightening(true)
+                                            .lineLimit(1)
+                                            .padding(.horizontal, 30)
+    
                                         HStack {
                                             Text("par \(book.authors.joined(separator: ", "))")
-                                                .font(.system(size: 10, weight: .bold))
+                                                .font(.system(size: 12, weight: .bold))
                                                 .foregroundColor(.gray)
                                                 .allowsTightening(true)
                                                 .lineLimit(1)
                                                 .padding(.horizontal, 30)
                                         }
+                                    }.contextMenu {
+                                        Button("Details") {
+                                            detailsWantedBook = book
+                                            detailsWanted = true
+                                        }
                                     }
                                 
+                            //} .accentColor(.black)
+                        }
+                        /*.contextMenu {
+                            Button("Details") {
+                                detailsWantedBook = book
+                                detailsWanted = true
                             }
-                                .accentColor(.black)
-                        }
-                        .contextMenu {
-                            Text("plgdkbm")
-                        }
+                        }*/
                     }.padding(.horizontal)
                 }
             }
