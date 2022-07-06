@@ -20,6 +20,12 @@ struct BooksHome: View {
     @AppStorage("booksFromHome") var booksStorage: Data = Data();
     
     init() {
+        let table = [0, 1, 2, 3, 4]
+        let ou = table[2...4]
+        print(ou)
+        for i in 0..<2 {
+            print(i)
+        }
         do {
             let booksDecoded = try JSONDecoder().decode([Book].self, from: booksStorage)
             _books = State(initialValue: booksDecoded)

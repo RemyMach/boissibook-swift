@@ -14,7 +14,7 @@ struct DownloadBooks: View {
     @AppStorage("booksFromHome") var booksStorage: Data = Data();
     
     let columns = [
-            GridItem(.adaptive(minimum: 160, maximum: 160))
+            GridItem(.adaptive(minimum: 150, maximum: 200))
     ]
     
     let screenWidth = UIScreen.main.bounds.size.width
@@ -58,20 +58,35 @@ struct DownloadBooks: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(books, id: \.id) { book in
                             NavigationLink(destination: BookDetails(book: book)) {
-                                AsyncImage(url: URL(string: book.imageUrl)) { image in
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        .cornerRadius(12)
-                                        .padding(.horizontal, 10)
-                                } placeholder: {
-                                    Image("clean-code")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .padding(.horizontal, 10)
+                                VStack {
+                                    AsyncImage(url: URL(string: book.imageUrl)) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .cornerRadius(12)
+                                            .padding(.horizontal, 10)
+                                    } placeholder: {
+                                        Image("clean-code")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .padding(.horizontal, 10)
+                                    }
+                                    .aspectRatio(4/3, contentMode: .fill)
+                                    Text(book.title)
+                                        .font(.system(size: 10, weight: .bold))
+                                        .minimumScaleFactor(0.85)
+                                        .allowsTightening(true)
+                                        .lineLimit(1)
+                                    Text("par \(book.authors.joined(separator: ", "))")
+                                        .font(.system(size: 10, weight: .bold))
+                                        .foregroundColor(.gray)
                                 }
+                                
                             }
                                 .accentColor(.black)
+                        }
+                        .contextMenu {
+                            Text("plgdkbm")
                         }
                     }.padding(.horizontal)
                 }
