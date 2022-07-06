@@ -52,6 +52,7 @@ struct BookCellViewAdd: View {
                     .frame(width: 25, height: 25)
                     .foregroundColor(.blue)
             }
+            .buttonStyle(.plain)
             /*Button("Details".uppercased()) {}
             .font(.system(size: 14, weight: .bold))
             .foregroundColor(.white)
