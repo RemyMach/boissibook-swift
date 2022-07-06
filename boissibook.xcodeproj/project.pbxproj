@@ -30,8 +30,6 @@
 		ADAA56A52870420300A2B960 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A32870420300A2B960 /* Home.swift */; };
 		ADAA56A72870455200A2B960 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A62870455200A2B960 /* CircleView.swift */; };
 		ADAA56A82870455200A2B960 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A62870455200A2B960 /* CircleView.swift */; };
-		ADAA56AB28704D9000A2B960 /* chimeup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ADAA56AA28704D9000A2B960 /* chimeup.mp3 */; };
-		ADAA56AC28704D9000A2B960 /* chimeup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ADAA56AA28704D9000A2B960 /* chimeup.mp3 */; };
 		ADAA56AE28704DDB00A2B960 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56AD28704DDB00A2B960 /* AudioPlayer.swift */; };
 		ADAA56AF28704DDB00A2B960 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56AD28704DDB00A2B960 /* AudioPlayer.swift */; };
 		ADB50B452874E99E00DFA47F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB50B442874E99E00DFA47F /* LoadingView.swift */; };
@@ -68,7 +66,6 @@
 		AD43002C2871C3E5005D64B8 /* SearchBookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookDto.swift; sourceTree = "<group>"; };
 		ADAA56A32870420300A2B960 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		ADAA56A62870455200A2B960 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		ADAA56AA28704D9000A2B960 /* chimeup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimeup.mp3; path = Shared/Assets.xcassets/chimeup.dataset/chimeup.mp3; sourceTree = SOURCE_ROOT; };
 		ADAA56AD28704DDB00A2B960 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		ADB50B442874E99E00DFA47F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		ADC20A3A2872BDC800FF7206 /* BookCellViewAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellViewAdd.swift; sourceTree = "<group>"; };
@@ -138,14 +135,6 @@
 			path = Dto;
 			sourceTree = "<group>";
 		};
-		ADAA56A928704D2C00A2B960 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				ADAA56AA28704D9000A2B960 /* chimeup.mp3 */,
-			);
-			path = Sounds;
-			sourceTree = "<group>";
-		};
 		ADEBA9A3286E2D890083D038 = {
 			isa = PBXGroup;
 			children = (
@@ -161,7 +150,6 @@
 			children = (
 				AD0D19B1287314AD0023FB46 /* models */,
 				AD43001928708227005D64B8 /* Services */,
-				ADAA56A928704D2C00A2B960 /* Sounds */,
 				ADEBA9C9286E354F0083D038 /* Utilities */,
 				ADEBA9C8286E35330083D038 /* Views */,
 				ADEBA9A9286E2D890083D038 /* boissibookApp.swift */,
@@ -302,7 +290,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADAA56AB28704D9000A2B960 /* chimeup.mp3 in Resources */,
 				ADEBA9BD286E2D8B0083D038 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,7 +298,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADAA56AC28704D9000A2B960 /* chimeup.mp3 in Resources */,
 				ADEBA9BE286E2D8B0083D038 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
