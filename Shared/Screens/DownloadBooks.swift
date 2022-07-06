@@ -77,6 +77,7 @@ struct DownloadBooks: View {
                 }
             }
             .navigationTitle("Livres disponibles")
+            .padding(.vertical, 30)
             //.navigationBarTitleDisplayMode(.inline)
         }
     }
