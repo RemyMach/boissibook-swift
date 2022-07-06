@@ -18,6 +18,10 @@ struct TabMenu: View {
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
+            DownloadBooks()
+                .tabItem {
+                    Image(systemName: "house")
+                }
         }
     }
 }

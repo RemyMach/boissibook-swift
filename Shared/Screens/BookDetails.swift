@@ -20,12 +20,6 @@ struct BookDetails: View {
             ScrollView {
                 VStack(spacing: 10) {
                     HStack() {
-                        ZStack {
-                            Image(systemName:"book.circle.fill")
-                                .font(.system(size: 50, weight: .ultraLight))
-                                .foregroundColor(.gray)
-                                .clipShape(Circle())
-                            }
                         VStack {
                             HStack {
                                 Text(book.title)
@@ -38,6 +32,7 @@ struct BookDetails: View {
                                     .foregroundColor(.gray)
                                 Spacer()
                             }
+                            Spacer()
                         }
                         Spacer()
                     }
@@ -71,6 +66,7 @@ struct BookDetails: View {
                         
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
