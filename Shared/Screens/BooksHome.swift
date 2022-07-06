@@ -41,12 +41,20 @@ struct BooksHome: View {
                                 Spacer()
                             }
                         }
-                        ForEach(searchText == "" ? books: books.filter { $0.title.contains(searchText)}, id: \.id) { book in
-                            NavigationLink(destination: BookDetails(book: book)) {
-                                BookCellView(book: book)
+                        if(books.count > 0) {
+                            ForEach(searchText == "" ? books: books.filter { $0.title.contains(searchText)}, id: \.id) { book in
+                                NavigationLink(destination: BookDetails(book: book)) {
+                                    BookCellView(book: book)
+                                }
+                                    .accentColor(.black)
+                                }
+                        }else {
+                            VStack {
+                                Spacer()
+                                Text("Vous n'avez pas encore de livre")
+                                Spacer()
                             }
-                                .accentColor(.black)
-                            }
+                        }
                     }
                     .listStyle(.plain)
                     .onAppear {

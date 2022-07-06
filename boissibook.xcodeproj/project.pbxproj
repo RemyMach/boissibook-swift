@@ -68,7 +68,7 @@
 		AD43002C2871C3E5005D64B8 /* SearchBookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookDto.swift; sourceTree = "<group>"; };
 		ADAA56A32870420300A2B960 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		ADAA56A62870455200A2B960 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		ADAA56AA28704D9000A2B960 /* chimeup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimeup.mp3; path = "../../../Restart-App/Resources/Sounds/chimeup.mp3"; sourceTree = "<group>"; };
+		ADAA56AA28704D9000A2B960 /* chimeup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimeup.mp3; path = Shared/Assets.xcassets/chimeup.dataset/chimeup.mp3; sourceTree = SOURCE_ROOT; };
 		ADAA56AD28704DDB00A2B960 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		ADB50B442874E99E00DFA47F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		ADC20A3A2872BDC800FF7206 /* BookCellViewAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellViewAdd.swift; sourceTree = "<group>"; };

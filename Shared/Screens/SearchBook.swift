@@ -33,10 +33,19 @@ struct SearchBook: View {
                     HStack {
                         Spacer()
                     }
-                    List(books) { book in
-                        BookCellViewAdd(book: book)
+                    if(books.count > 0) {
+                        List(books) { book in
+                            BookCellViewAdd(book: book)
+                        }
+                    } else {
+                        VStack {
+                            Spacer()
+                            Text("Rechercher le livre que vous voulez par Titre")
+                            Spacer()
+                        }
                     }
-                    .listStyle(.plain)
+                }
+                .listStyle(.plain)
                 }.searchable(text:$searchText)
                     .navigationTitle("Rechercher")
                     .navigationBarTitleDisplayMode(.large)
@@ -75,7 +84,7 @@ struct SearchBook: View {
             Spacer()
         }
     }
-}
+
 
 struct SearchBook_Previews: PreviewProvider {
     static var previews: some View {
