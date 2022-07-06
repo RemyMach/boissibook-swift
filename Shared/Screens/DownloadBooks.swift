@@ -58,29 +58,61 @@ struct DownloadBooks: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(books, id: \.id) { book in
                             NavigationLink(destination: BookDetails(book: book)) {
-                                VStack {
-                                    AsyncImage(url: URL(string: book.imageUrl)) { image in
-                                        image
-                                            .resizable()
-                                            .scaledToFit()
-                                            .cornerRadius(12)
-                                            .padding(.horizontal, 10)
-                                    } placeholder: {
-                                        Image("clean-code")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .padding(.horizontal, 10)
+                                    VStack {
+                                        ZStack {
+                                            VStack {
+                                                HStack {
+                                                    Spacer()
+                                                    Image(systemName: "ellipsis")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 14, height: 14, alignment: .leading)
+                                                        .padding(.horizontal, 15)
+                                                        .rotationEffect(.degrees(90))
+                                                        .foregroundColor(.gray)
+                                                }
+                                                Spacer()
+                                            }
+                                            AsyncImage(url: URL(string: book.imageUrl)) { image in
+                                                image
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .cornerRadius(12)
+                                                    .padding(.horizontal, 10)
+                                            } placeholder: {
+                                                Image("clean-code")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .padding(.horizontal, 10)
+                                            }
+                                            .aspectRatio(4/3, contentMode: .fill)
+                                        }
+                                       
+                                        ZStack {
+                                            Text(book.title)
+                                                .font(.system(size: 10, weight: .bold))
+                                                .minimumScaleFactor(0.90)
+                                                .allowsTightening(true)
+                                                .lineLimit(1)
+                                                .padding(.horizontal, 30)
+                                            HStack {
+                                                Spacer()
+                                                Image(systemName: "ellipsis")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 14, height: 14, alignment: .leading)
+                                                    .padding(.horizontal, 15)
+                                            }
+                                        }
+                                        HStack {
+                                            Text("par \(book.authors.joined(separator: ", "))")
+                                                .font(.system(size: 10, weight: .bold))
+                                                .foregroundColor(.gray)
+                                                .allowsTightening(true)
+                                                .lineLimit(1)
+                                                .padding(.horizontal, 30)
+                                        }
                                     }
-                                    .aspectRatio(4/3, contentMode: .fill)
-                                    Text(book.title)
-                                        .font(.system(size: 10, weight: .bold))
-                                        .minimumScaleFactor(0.85)
-                                        .allowsTightening(true)
-                                        .lineLimit(1)
-                                    Text("par \(book.authors.joined(separator: ", "))")
-                                        .font(.system(size: 10, weight: .bold))
-                                        .foregroundColor(.gray)
-                                }
                                 
                             }
                                 .accentColor(.black)
