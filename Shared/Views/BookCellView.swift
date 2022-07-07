@@ -27,11 +27,20 @@ struct BookCellView: View {
             VStack(alignment: .leading) {
                 Text(book.title)
                     .bold()
+                    .padding(.trailing, 12)
+                    .allowsTightening(true)
+                    .lineLimit(1)
                 Text(book.authors.joined(separator: ", "))
                     .font(.caption)
                     .foregroundColor(.gray)
+                    .padding(.trailing, 12)
+                    .allowsTightening(true)
+                    .lineLimit(1)
             }
+            
             Spacer()
+            Image(systemName: "chevron.right")
+                            .foregroundColor(.gray)
             /*Button("Details".uppercased()) {}
             .font(.system(size: 14, weight: .bold))
             .foregroundColor(.white)

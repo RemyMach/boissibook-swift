@@ -9,8 +9,8 @@ import SwiftUI
 
 struct Carousel: View {
     
-    let categoryName: String
-    let movies: [Movie]
+    let books: [Book]
+    
     
     func getScale(proxy: GeometryProxy) -> CGFloat {
 //        guard let rootView = UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.rootViewController?.view else { return 1}
@@ -44,14 +44,14 @@ struct Carousel: View {
         
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 16) {
-                ForEach(movies, id: \.self) { num in
+                ForEach(books, id: \.id) { book in
                     GeometryReader { proxy in
                         let scale = getScale(proxy: proxy)
                         NavigationLink(
-                            destination: MovieDetailsView(movie: num),
+                            destination: MovieDetailsView(book: book),
                             label: {
                                 VStack(spacing: 8) {
-                                    Image(num.imageName)
+                                    Image("clean-code")
                                         .resizable()
                                         .frame(width: 160)
                                         .scaledToFill()
@@ -62,8 +62,8 @@ struct Carousel: View {
                                                 .stroke(Color(white: 0.4))
                                         )
                                         .shadow(radius: 3)
-                                    Text(num.title)
-                                        .font(.system(size: 10, weight: .semibold))
+                                    Text(book.title)
+                                        .font(.system(size: 16, weight: .semibold))
                                         .multilineTextAlignment(.center)
                                         .foregroundColor(.black)
                                     HStack(spacing: 0) {
@@ -95,13 +95,13 @@ struct Carousel: View {
 
 struct MovieDetailsView: View {
     
-    let movie: Movie
+    let book: Book
     
     var body: some View {
-        Image(movie.imageName)
+        Image(book.imageUrl)
             .resizable()
             .scaledToFill()
-            .navigationTitle(movie.title)
+            .navigationTitle(book.title)
     }
 }
 
@@ -116,6 +116,6 @@ struct Carousel_Previews: PreviewProvider {
         .init(title: "Avengers: Endgame", imageName: "clean-code"),
     ]
     static var previews: some View {
-        Carousel(categoryName: "films", movies: Carousel_Previews.moviesGen)
+        Carousel(books: [])
     }
 }

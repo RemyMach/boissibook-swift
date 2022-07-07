@@ -38,7 +38,7 @@ struct DownloadBooks: View {
                 VStack {
                     Divider()
                         .padding(.horizontal, 20)
-                    CarouselView()
+                    CarouselView(books: books, title: "Récents")
                         .background(
                             LinearGradient(gradient: Gradient(colors: [.white, Color(red: 0.95, green: 0.95, blue: 0.95)]), startPoint: .center, endPoint: .bottom))
                         .padding(.top, 15)
@@ -121,12 +121,6 @@ struct DownloadBooks: View {
                                     
                                 //} .accentColor(.black)
                             }
-                            /*.contextMenu {
-                                Button("Details") {
-                                    detailsWantedBook = book
-                                    detailsWanted = true
-                                }
-                            }*/
                         }
                     }.navigationTitle("Mes livres")
                         .padding(.vertical, 30)

@@ -13,26 +13,20 @@ struct Movie: Hashable {
 
 struct CarouselView: View {
     
-    //let Books: [Book];
-    let topMovies: [Movie] = [
-            .init(title: "Clean Code", imageName: "clean-code"),
-            .init(title: "Clean Code", imageName: "clean-code"),
-            .init(title: "Clean Code", imageName: "clean-code"),
-            .init(title: "Clean Code", imageName: "clean-code"),
-            .init(title: "Clean Code", imageName: "clean-code"),
-            .init(title: "Clean Code", imageName: "clean-code"),
-        ]
+    let books: [Book];
+    
+    let title : String;
     
     var body: some View {
         VStack {
             HStack {
-                Text("Récents")
+                Text(title)
                     .font(.system(size:20))
                     .fontWeight(.bold)
                     .padding(.horizontal, 10)
                 Spacer()
             }
-            Carousel(categoryName: "Top Movies of 2020", movies: topMovies)
+            Carousel(books: books)
         }
         .padding(.vertical, 20)
     }
@@ -40,6 +34,6 @@ struct CarouselView: View {
 
 struct CarouselView_Previews: PreviewProvider {
     static var previews: some View {
-        CarouselView()
+        CarouselView(books: [], title: "Récents")
     }
 }
