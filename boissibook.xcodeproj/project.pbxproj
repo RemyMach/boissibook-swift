@@ -28,6 +28,7 @@
 		AD43002B2871BE5E005D64B8 /* SearchBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300292871BE5E005D64B8 /* SearchBooks.swift */; };
 		AD43002D2871C3E5005D64B8 /* SearchBookDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43002C2871C3E5005D64B8 /* SearchBookDto.swift */; };
 		AD43002E2871C3E5005D64B8 /* SearchBookDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43002C2871C3E5005D64B8 /* SearchBookDto.swift */; };
+		AD5A593D2879FFA800C462F0 /* DebounceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A593C2879FFA800C462F0 /* DebounceObject.swift */; };
 		ADAA56A42870420300A2B960 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A32870420300A2B960 /* Home.swift */; };
 		ADAA56A52870420300A2B960 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A32870420300A2B960 /* Home.swift */; };
 		ADAA56A72870455200A2B960 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA56A62870455200A2B960 /* CircleView.swift */; };
@@ -72,6 +73,7 @@
 		AD4300262871BCC4005D64B8 /* SearchBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBook.swift; sourceTree = "<group>"; };
 		AD4300292871BE5E005D64B8 /* SearchBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBooks.swift; sourceTree = "<group>"; };
 		AD43002C2871C3E5005D64B8 /* SearchBookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookDto.swift; sourceTree = "<group>"; };
+		AD5A593C2879FFA800C462F0 /* DebounceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebounceObject.swift; sourceTree = "<group>"; };
 		ADAA56A32870420300A2B960 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		ADAA56A62870455200A2B960 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		ADAA56AD28704DDB00A2B960 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				ADAA56AD28704DDB00A2B960 /* AudioPlayer.swift */,
 				6424C152B951A858179A762B /* StringHtml.swift */,
+				AD5A593C2879FFA800C462F0 /* DebounceObject.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				AD0D19B928732D1C0023FB46 /* BookHeader.swift in Sources */,
 				ADC20A3E2872C1D200FF7206 /* AddBook.swift in Sources */,
 				AD0D19AF287310420023FB46 /* BookDetails.swift in Sources */,
+				AD5A593D2879FFA800C462F0 /* DebounceObject.swift in Sources */,
 				AD0D19BC287483420023FB46 /* DownloadBooks.swift in Sources */,
 				AD0D19B3287314BC0023FB46 /* Book.swift in Sources */,
 				ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */,

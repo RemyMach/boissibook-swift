@@ -51,17 +51,31 @@ struct Carousel: View {
                             destination: MovieDetailsView(book: book),
                             label: {
                                 VStack(spacing: 8) {
-                                    Image("clean-code")
-                                        .resizable()
-                                        .frame(width: 160)
-                                        .scaledToFill()
-                                        .clipped()
-                                        .cornerRadius(8)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(Color(white: 0.4))
-                                        )
-                                        .shadow(radius: 3)
+                                    AsyncImage(url: URL(string: book.imageUrl)) { image in
+                                        image
+                                            .resizable()
+                                            .frame(width: 160)
+                                            .scaledToFill()
+                                            .clipped()
+                                            .cornerRadius(8)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .stroke(Color(white: 0.4))
+                                            )
+                                            .shadow(radius: 3)
+                                    } placeholder: {
+                                        Image("clean-code")
+                                            .resizable()
+                                            .frame(width: 160)
+                                            .scaledToFill()
+                                            .clipped()
+                                            .cornerRadius(8)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .stroke(Color(white: 0.4))
+                                            )
+                                            .shadow(radius: 3)
+                                    }
                                     Text(book.title)
                                         .font(.system(size: 16, weight: .semibold))
                                         .multilineTextAlignment(.center)
