@@ -10,17 +10,18 @@ import SwiftUI
 struct TabMenu: View {
     var body: some View {
         TabView {
-            BooksHome()
+            DownloadBooks()
                 .tabItem {
+                    Label("Lire", systemImage: "house")
                     Image(systemName: "house")
                 }
             SearchBook()
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
+                    Label("Ajouter", systemImage: "plus")
                 }
-            DownloadBooks()
+            BooksHome()
                 .tabItem {
-                    Image(systemName: "house")
+                    Label("Bibliothèque", systemImage: "books.vertical.fill")
                 }
         }
     }

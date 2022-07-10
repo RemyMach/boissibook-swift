@@ -106,7 +106,7 @@ struct BooksHome: View {
                             }
                         }
                     }
-                    .searchable(text:$searchText)
+                    .searchable(text:$searchText, prompt: "Rechercher dans la biliothèque")
                     .navigationTitle("Bibliothèque")
                         .navigationBarTitleDisplayMode(.large)
                         Spacer()

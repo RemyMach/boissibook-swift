@@ -9,7 +9,24 @@ import SwiftUI
 
 struct Carousel: View {
     
-    let books: [Book]
+    @State var books: [Book]
+    
+    @State var booksDownloads: [Book] = []
+    
+    @AppStorage("booksFromHome") var booksStorage: Data?
+    
+    init(books: [Book]) {
+        self.books = books
+        do {
+            if booksStorage != nil {
+                let booksDecoded = try JSONDecoder().decode([Book].self, from: booksStorage!)
+                _booksDownloads = State(initialValue: booksDecoded)
+            }
+        } catch {
+            print("error in decode booStorage")
+            print(error)
+        }
+    }
     
     
     func getScale(proxy: GeometryProxy) -> CGFloat {
@@ -41,69 +58,34 @@ struct Carousel: View {
             Spacer()
         }.padding(.horizontal)
         .padding(.top)*/
-        
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(alignment: .top, spacing: 16) {
-                ForEach(books, id: \.id) { book in
-                    GeometryReader { proxy in
-                        let scale = getScale(proxy: proxy)
-                        NavigationLink(
-                            destination: MovieDetailsView(book: book),
-                            label: {
-                                VStack(spacing: 8) {
-                                    AsyncImage(url: URL(string: book.imageUrl)) { image in
-                                        image
-                                            .resizable()
-                                            .frame(width: 160)
-                                            .scaledToFill()
-                                            .clipped()
-                                            .cornerRadius(8)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 8)
-                                                    .stroke(Color(white: 0.4))
-                                            )
-                                            .shadow(radius: 3)
-                                    } placeholder: {
-                                        Image("clean-code")
-                                            .resizable()
-                                            .frame(width: 160)
-                                            .scaledToFill()
-                                            .clipped()
-                                            .cornerRadius(8)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 8)
-                                                    .stroke(Color(white: 0.4))
-                                            )
-                                            .shadow(radius: 3)
-                                    }
-                                    Text(book.title)
-                                        .font(.system(size: 16, weight: .semibold))
-                                        .multilineTextAlignment(.center)
-                                        .foregroundColor(.black)
-                                    HStack(spacing: 0) {
-                                        /*ForEach(0..<5) { num in
-                                            Image(systemName: "star.fill")
-                                                .foregroundColor(.orange)
-                                                .font(.system(size: 14))
-                                        }*/
-                                    }.padding(.top, -4)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .top, spacing: 16) {
+                        ForEach(books, id: \.id) { book in
+                            GeometryReader { proxy in
+                                let scale = getScale(proxy: proxy)
+                                
+                                //TODO mettre les résultats inverse quand on aura un storage de ce qui est téléchargé
+                                if(booksDownloads.contains(where: {$0.id == book.id})) {
+                                    NavigationLink(
+                                       destination: BookDetails(book: book),
+                                       label: {
+                                           CarouselBookView(book: book, scale: scale)
+                                        })
+                                } else {
+                                    CarouselBookView(book: book, scale: scale)
                                 }
-                            })
-                        
-                            .scaleEffect(.init(width: scale, height: scale))
-//                            .animation(.spring(), value: 1)
-                            .animation(.easeOut(duration: 1))
-                            
-                            .padding(.vertical)
+                                    
+                            }
+                            .frame(width: 125, height: 290)
+                            .padding(.horizontal, 32)
+                            .padding(.vertical, 32)
+                        }
+                        Spacer()
+                            .frame(width: 16)
                     }
-                    .frame(width: 125, height: 290)
-                    .padding(.horizontal, 32)
-                    .padding(.vertical, 32)
-                }
-                Spacer()
-                    .frame(width: 16)
+                
             }
-        }
     }
 }
 

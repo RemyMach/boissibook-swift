@@ -21,6 +21,7 @@ struct SearchBook: View {
     
     @State var books: [Book] = []
     
+    //TODO mettre un hitorique de recherche ?
     var body: some View {
         ZStack {
             NavigationView {
@@ -46,7 +47,7 @@ struct SearchBook: View {
                             Spacer()
                         }
                     }
-                }.searchable(text: $searchText.text)
+                }.searchable(text: $searchText.text, prompt: "Rechercher un livre à ajouter")
                     .navigationTitle("Rechercher")
                     .navigationBarTitleDisplayMode(.large)
                     .onChange(of: searchText.debouncedText) { newValue in
