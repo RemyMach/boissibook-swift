@@ -10,11 +10,40 @@ import SwiftUI
 struct BookDetails: View {
 
     let book: Book;
+    let reviews = [
+        BookReview(id: "as", img: "avatar-0", username: "Swann HERRERA", content: "Lorem ipsum dolor sit atme etas"),
+        BookReview(id: "we", img: "avatar-1", username: "Flav", content: "lorem dolor site atme")
+    ];
 
     let screenWidth = UIScreen.main.bounds.size.width
 
     let screenHeight = UIScreen.main.bounds.size.height
 
+    fileprivate func reviewCard(review: BookReview) -> some View {
+        return HStack(alignment: .top) {
+            Image(review.img)
+                .resizable()
+                .cornerRadius(5)
+                .frame(width: 80, height: 80)
+            VStack(alignment: .leading) {
+                Text(review.username)
+                    .foregroundColor(Color.yellow)
+                    .fontWeight(Font.Weight.bold)
+                Text(review.content)
+            }
+        }
+        .padding(12)
+        .background(LinearGradient(gradient: Gradient(colors: [
+            Color(red: 0.16, green: 0.28, blue: 0.35),
+            Color(red: 0.98, green: 0.43, blue: 0.79)
+        ]), startPoint: .topLeading, endPoint: .bottomTrailing))
+        .cornerRadius(10)
+        .fixedSize(horizontal: true, vertical: true)
+    }
+    
+    func openBook() {}
+    
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -57,14 +86,38 @@ struct BookDetails: View {
                         UIKLabel(description, maxWidth: screenWidth * 0.8)
                                 .padding()
                     }
-                    Button("Ouvrir") {
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(reviews, id: \.id) { review in
+                                reviewCard(review: review)
+                            }
+                        }
+                    }.padding(.horizontal)
+                    
+                    
+                    Button(action: openBook) {
+                        Text("Lire").padding(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))
                     }
-                            .buttonStyle(.bordered)
-                            .buttonBorderShape(.roundedRectangle(radius: 20))
-                            .frame(height: 48)
-                            .foregroundColor(.blue)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.roundedRectangle(radius: 20))
+                    .frame(height: 48)
+                    .foregroundColor(.blue)
+                    .padding(.horizontal, 12)
+                    
+                    
+                    
+                    
+//                    HStack {
+//
+//                    }
+//                    .padding()
+//                    .padding(.horizontal)
+//                    .background(Color.yellow)
+//                    .frame(maxHeight: .infinity, alignment: .bottom)
+//                    .edgesIgnoringSafeArea(.bottom)
+
+                    
 
                 }
             }

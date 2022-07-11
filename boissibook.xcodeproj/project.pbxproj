@@ -58,6 +58,8 @@
 		ADEBA9D2286F9DDB0083D038 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D0286F9DDB0083D038 /* BookView.swift */; };
 		ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D328703F640083D038 /* BookCellView.swift */; };
 		ADEBA9D528703F640083D038 /* BookCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D328703F640083D038 /* BookCellView.swift */; };
+		D4819679287C77B000E21006 /* BookReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4819678287C77B000E21006 /* BookReview.swift */; };
+		D481967A287C77B000E21006 /* BookReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4819678287C77B000E21006 /* BookReview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,7 @@
 		ADEBA9CD286E39950083D038 /* BooksHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksHome.swift; sourceTree = "<group>"; };
 		ADEBA9D0286F9DDB0083D038 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		ADEBA9D328703F640083D038 /* BookCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellView.swift; sourceTree = "<group>"; };
+		D4819678287C77B000E21006 /* BookReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				AD0D19B2287314BC0023FB46 /* Book.swift */,
+				D4819678287C77B000E21006 /* BookReview.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -333,6 +337,7 @@
 				ADEBA9BB286E2D8B0083D038 /* ContentView.swift in Sources */,
 				ADEBA9B9286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				ADEBA9CE286E39950083D038 /* BooksHome.swift in Sources */,
+				D4819679287C77B000E21006 /* BookReview.swift in Sources */,
 				AD0D19B6287316E90023FB46 /* BookDto.swift in Sources */,
 				ADB50B452874E99E00DFA47F /* LoadingView.swift in Sources */,
 				AD43002A2871BE5E005D64B8 /* SearchBooks.swift in Sources */,
@@ -369,6 +374,7 @@
 				AD0D19BD287483420023FB46 /* DownloadBooks.swift in Sources */,
 				ADC20A3C2872BDC800FF7206 /* BookCellViewAdd.swift in Sources */,
 				ADC20A3F2872C1D200FF7206 /* AddBook.swift in Sources */,
+				D481967A287C77B000E21006 /* BookReview.swift in Sources */,
 				ADEBA9BA286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				AD0D19B7287316E90023FB46 /* BookDto.swift in Sources */,
 				AD43002B2871BE5E005D64B8 /* SearchBooks.swift in Sources */,

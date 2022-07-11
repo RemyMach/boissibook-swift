@@ -61,7 +61,8 @@ struct BooksHome: View {
                         }
                         LazyVStack {
                             if(books.count > 0) {
-                                ForEach(searchText == "" ? books: books.filter { $0.title.contains(searchText)}, id: \.id) { book in
+                                ForEach(searchText == "" ? books: books.filter { $0.title.contains(searchText)},
+                                        id: \.id) { book in
                                     Divider().padding(.horizontal, 15)
                                     NavigationLink(destination: BookDetails(book: book)) {
                                         BookCellView(book: book)
