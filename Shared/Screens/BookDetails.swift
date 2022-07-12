@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BookDetails: View {
 
-    let url: URL;
+    @State var url: URL?;
+    @State var bookFileUrl: URL?;
 
     let book: Book;
 
@@ -17,43 +18,38 @@ struct BookDetails: View {
     @State private var isBookFileDownloading: Bool = false;
 
     @State private var bookFile: BookFile? = nil;
-    @AppStorage("booksFiles") var booksFileStorage: Data?
+    @AppStorage("booksFiles") var booksFileStorage: Data?;
 
     let screenWidth = UIScreen.main.bounds.size.width
 
     let screenHeight = UIScreen.main.bounds.size.height
 
-    init(book: Book) {
-        self.book = book
-        url = URL(string: "http://boissibook.nospy.fr/book-files/book/\(book.id)")!
+    func addBookFileToStorage(bookFile: BookFile) {
         do {
             if booksFileStorage != nil {
-                let booksFilesDecoded = try JSONDecoder().decode([BookFile].self, from: booksFileStorage!)
-                bookFile = booksFilesDecoded.first(where: { $0.bookId == book.id })
-                isBookFileAvailable = true
-            }
-        } catch {
-            print("error in decode booksFileStorage")
-            print(error)
-        }
-    }
-
-    mutating func addBookFileToStorage(bookFile: BookFile) {
-        isBookFileDownloading = true
-        do {
-            if booksFileStorage != nil {
-                var booksFilesDecoded = try JSONDecoder().decode([BookFile].self, from: booksFileStorage!)
+                guard var booksFilesDecoded = try? JSONDecoder().decode([BookFile].self, from: booksFileStorage!) else {
+                    print("error in decode booksFileStorage")
+                    return
+                }
                 booksFilesDecoded.removeAll(where: { $0.bookId == bookFile.bookId })
                 booksFilesDecoded.append(bookFile)
+                print(booksFilesDecoded)
+                guard let bookFilesEncode = try? JSONEncoder().encode([bookFile]) else {
+                    print("error in encode bookFile")
+                    return
+                }
                 self.bookFile = bookFile
-                booksFileStorage = try JSONEncoder().encode(booksFilesDecoded)
+                booksFileStorage = try JSONEncoder().encode(bookFilesEncode)
             } else {
-                booksFileStorage = try JSONEncoder().encode([bookFile])
+                guard let bookFilesEncode = try? JSONEncoder().encode([bookFile]) else {
+                    print("error in encode bookFile")
+                    return
+                }
+                booksFileStorage = bookFilesEncode
             }
-            isBookFileDownloading = false
+            isBookFileAvailable = true
         } catch {
-            isBookFileDownloading = false
-            print("error in decode booksFileStorage")
+            print("error in add book to file storage")
             print(error)
         }
     }
@@ -113,7 +109,7 @@ struct BookDetails: View {
                                 .foregroundColor(.blue)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
-                    } else if bookFile != nil && bookFile?.bookData != nil {
+                    } else if isBookFileAvailable {
                         Button("Ouvrir") {
                             // Open bookfile in epub reader
                         }
@@ -123,9 +119,21 @@ struct BookDetails: View {
                                 .foregroundColor(.blue)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
-                    } else if isBookFileAvailable {
+                    } else if bookFile != nil {
                         Button("Obtenir") {
-                            // Download bookfile
+                            isBookFileDownloading = true
+                            URLSession.shared.downloadBook(at: bookFileUrl!) { result in
+                                switch result {
+                                case .success(let data):
+                                    self.bookFile?.bookData = data
+                                    isBookFileDownloading = false
+                                    addBookFileToStorage(bookFile: bookFile!)
+                                case .failure(let error):
+                                    isBookFileDownloading = false
+                                    print("error in downloadBook")
+                                    print(error)
+                                }
+                            }
                         }
                                 .buttonStyle(.bordered)
                                 .buttonBorderShape(.roundedRectangle(radius: 20))
@@ -143,16 +151,27 @@ struct BookDetails: View {
             }
                     .navigationBarTitleDisplayMode(.inline)
                     .onAppear() {
+                        url = URL(string: "http://boissibook.nospy.fr/book-files/book/\(book.id)")!
+                        do {
+                            if booksFileStorage != nil {
+                                let booksFilesDecoded = try JSONDecoder().decode([BookFile].self, from: booksFileStorage!)
+                                bookFile = booksFilesDecoded.first(where: { $0.bookId == book.id })
+                                isBookFileAvailable = bookFile != nil
+                            }
+                        } catch {
+                            print("error in decode booksFileStorage")
+                            print(error)
+                        }
+
                         if bookFile == nil {
-                            URLSession.shared.getBookFile(at: url) { result in
+                            URLSession.shared.getBookFile(at: url!) { result in
                                 switch result {
                                 case .success(let bookFile):
                                     self.bookFile = BookFile(id: bookFile.id, bookId: book.id)
-                                    self.isBookFileAvailable = true
+                                    self.bookFileUrl = URL(string: "http://boissibook.nospy.fr/book-files/\(bookFile.id)/download")
                                 case .failure(let error):
                                     print("Error when get book files from API")
                                     print(error)
-                                    self.isBookFileAvailable = false
                                 }
                             }
                         }

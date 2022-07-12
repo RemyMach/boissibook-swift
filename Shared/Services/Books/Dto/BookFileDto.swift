@@ -9,7 +9,7 @@ struct BookFileDto: Decodable {
     let name: String
     let type: String
     let bookId: String
-    let userId: String
+    let userId: String?
     let downloadCount: Int
 }
 

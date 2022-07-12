@@ -17,7 +17,6 @@ extension URLSession {
                     if let data = data {
                         do {
                             print(url.absoluteString)
-                            print(data)
                             let bookFiles = try JSONDecoder().decode(GetBookFilesRequest.self, from: data)
                             print(bookFiles)
                             if bookFiles.bookFiles.count > 0 {
