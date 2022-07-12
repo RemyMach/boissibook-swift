@@ -9,11 +9,54 @@ import SwiftUI
 
 struct BookDetails: View {
 
+    let url: URL;
+
     let book: Book;
+
+    @State private var isBookFileAvailable: Bool = false;
+    @State private var isBookFileDownloading: Bool = false;
+
+    @State private var bookFile: BookFile? = nil;
+    @AppStorage("booksFiles") var booksFileStorage: Data?
 
     let screenWidth = UIScreen.main.bounds.size.width
 
     let screenHeight = UIScreen.main.bounds.size.height
+
+    init(book: Book) {
+        self.book = book
+        url = URL(string: "http://boissibook.nospy.fr/book-files/book/\(book.id)")!
+        do {
+            if booksFileStorage != nil {
+                let booksFilesDecoded = try JSONDecoder().decode([BookFile].self, from: booksFileStorage!)
+                bookFile = booksFilesDecoded.first(where: { $0.bookId == book.id })
+                isBookFileAvailable = true
+            }
+        } catch {
+            print("error in decode booksFileStorage")
+            print(error)
+        }
+    }
+
+    mutating func addBookFileToStorage(bookFile: BookFile) {
+        isBookFileDownloading = true
+        do {
+            if booksFileStorage != nil {
+                var booksFilesDecoded = try JSONDecoder().decode([BookFile].self, from: booksFileStorage!)
+                booksFilesDecoded.removeAll(where: { $0.bookId == bookFile.bookId })
+                booksFilesDecoded.append(bookFile)
+                self.bookFile = bookFile
+                booksFileStorage = try JSONEncoder().encode(booksFilesDecoded)
+            } else {
+                booksFileStorage = try JSONEncoder().encode([bookFile])
+            }
+            isBookFileDownloading = false
+        } catch {
+            isBookFileDownloading = false
+            print("error in decode booksFileStorage")
+            print(error)
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -57,18 +100,63 @@ struct BookDetails: View {
                         UIKLabel(description, maxWidth: screenWidth * 0.8)
                                 .padding()
                     }
-                    Button("Ouvrir") {
+                    if isBookFileDownloading {
+                        // Loading spinner button
+                        HStack {
+                            Spacer()
+                            LoadingView()
+                            Spacer()
+                        }
+                                .buttonStyle(.bordered)
+                                .buttonBorderShape(.roundedRectangle(radius: 20))
+                                .frame(height: 48)
+                                .foregroundColor(.blue)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                    } else if bookFile != nil && bookFile?.bookData != nil {
+                        Button("Ouvrir") {
+                            // Open bookfile in epub reader
+                        }
+                                .buttonStyle(.bordered)
+                                .buttonBorderShape(.roundedRectangle(radius: 20))
+                                .frame(height: 48)
+                                .foregroundColor(.blue)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                    } else if isBookFileAvailable {
+                        Button("Obtenir") {
+                            // Download bookfile
+                        }
+                                .buttonStyle(.bordered)
+                                .buttonBorderShape(.roundedRectangle(radius: 20))
+                                .frame(height: 48)
+                                .foregroundColor(.blue)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                    } else {
+                        // No download available
+                        Text("Pas de téléchargement disponible")
+                                .foregroundColor(.gray)
+                                .padding(.horizontal, 12)
                     }
-                            .buttonStyle(.bordered)
-                            .buttonBorderShape(.roundedRectangle(radius: 20))
-                            .frame(height: 48)
-                            .foregroundColor(.blue)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-
                 }
             }
                     .navigationBarTitleDisplayMode(.inline)
+                    .onAppear() {
+                        if bookFile == nil {
+                            URLSession.shared.getBookFile(at: url) { result in
+                                switch result {
+                                case .success(let bookFile):
+                                    self.bookFile = BookFile(id: bookFile.id, bookId: book.id)
+                                    self.isBookFileAvailable = true
+                                case .failure(let error):
+                                    print("Error when get book files from API")
+                                    print(error)
+                                    self.isBookFileAvailable = false
+                                }
+                            }
+                        }
+                    }
         }
     }
 }
