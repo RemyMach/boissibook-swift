@@ -58,6 +58,8 @@
 		ADEBA9D2286F9DDB0083D038 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D0286F9DDB0083D038 /* BookView.swift */; };
 		ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D328703F640083D038 /* BookCellView.swift */; };
 		ADEBA9D528703F640083D038 /* BookCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D328703F640083D038 /* BookCellView.swift */; };
+		D4F11162287D6FC000E9618F /* PdfBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F11161287D6FC000E9618F /* PdfBookView.swift */; };
+		D4F11163287D6FC000E9618F /* PdfBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F11161287D6FC000E9618F /* PdfBookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,7 @@
 		ADEBA9CD286E39950083D038 /* BooksHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksHome.swift; sourceTree = "<group>"; };
 		ADEBA9D0286F9DDB0083D038 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		ADEBA9D328703F640083D038 /* BookCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellView.swift; sourceTree = "<group>"; };
+		D4F11161287D6FC000E9618F /* PdfBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfBookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +203,7 @@
 				AD4300232871BB37005D64B8 /* TabMenu.swift */,
 				AD4300262871BCC4005D64B8 /* SearchBook.swift */,
 				AD0D19AE287310420023FB46 /* BookDetails.swift */,
+				D4F11161287D6FC000E9618F /* PdfBookView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -334,6 +338,7 @@
 				ADEBA9B9286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				ADEBA9CE286E39950083D038 /* BooksHome.swift in Sources */,
 				AD0D19B6287316E90023FB46 /* BookDto.swift in Sources */,
+				D4F11162287D6FC000E9618F /* PdfBookView.swift in Sources */,
 				ADB50B452874E99E00DFA47F /* LoadingView.swift in Sources */,
 				AD43002A2871BE5E005D64B8 /* SearchBooks.swift in Sources */,
 				AD43001C2870824B005D64B8 /* GetBooks.swift in Sources */,
@@ -363,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4F11163287D6FC000E9618F /* PdfBookView.swift in Sources */,
 				AD0D19B4287314BC0023FB46 /* Book.swift in Sources */,
 				ADEBA9BC286E2D8B0083D038 /* ContentView.swift in Sources */,
 				ADB50B4C2875DB1400DFA47F /* CarouselView.swift in Sources */,

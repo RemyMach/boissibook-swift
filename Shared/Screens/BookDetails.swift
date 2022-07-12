@@ -55,20 +55,22 @@ struct BookDetails: View {
                     }
                     if let description = book.description.htmlAttributedString() {
                         UIKLabel(description, maxWidth: screenWidth * 0.8)
-                                .padding()
+                        .padding()
+                    }
+                    NavigationLink(destination: PdfBookView()) {
+                        Text("Open")
                     }
                     Button("Ouvrir") {
                     }
-                            .buttonStyle(.bordered)
-                            .buttonBorderShape(.roundedRectangle(radius: 20))
-                            .frame(height: 48)
-                            .foregroundColor(.blue)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.roundedRectangle(radius: 20))
+                    .frame(height: 48)
+                    .foregroundColor(.blue)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
                 }
             }
-                    .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
