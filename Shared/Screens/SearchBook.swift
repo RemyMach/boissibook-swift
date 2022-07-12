@@ -13,12 +13,15 @@ struct SearchBook: View {
     
     let screenWidth = UIScreen.main.bounds.size.width
     
-    @State private var searchText = ""
+    //@State private var searchText = @StateObject var debounceObject = DebounceObject()
+    
+    @StateObject var searchText = DebounceObject()
     
     @State private var requestIsLoading: Bool = false;
     
     @State var books: [Book] = []
     
+    //TODO mettre un hitorique de recherche ?
     var body: some View {
         ZStack {
             NavigationView {
@@ -33,24 +36,21 @@ struct SearchBook: View {
                     HStack {
                         Spacer()
                     }
-                    List(books) { book in
-                        BookCellViewAdd(book: book)
-                    }
-                    .listStyle(.plain)
+ 
                     if(books.count > 0) {
                         List(books) { book in
                             BookCellViewAdd(book: book)
-                        }
+                        }.listStyle(.plain)
                     } else {
                         VStack {
                             Text("Rechercher un livre par son Titre pour l'ajouter")
                             Spacer()
                         }
                     }
-                }.searchable(text:$searchText)
+                }.searchable(text: $searchText.text, prompt: "Rechercher un livre à ajouter")
                     .navigationTitle("Rechercher")
                     .navigationBarTitleDisplayMode(.large)
-                    .onChange(of: searchText) { newValue in
+                    .onChange(of: searchText.debouncedText) { newValue in
                         if(newValue.count > 3) {
                             var urlComponents = URLComponents()
                             urlComponents.scheme = "http"

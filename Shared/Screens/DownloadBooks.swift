@@ -19,6 +19,9 @@ struct DownloadBooks: View {
     
     let screenWidth = UIScreen.main.bounds.size.width
     
+    @State var detailsWantedBook: Book? = nil
+    @State var detailsWanted = false
+
     init() {
         do {
             let booksDecoded = try JSONDecoder().decode([Book].self, from: booksStorage)
@@ -33,66 +36,98 @@ struct DownloadBooks: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    /*HStack() {
-                        VStack {
-                            HStack {
-                                Text("Livres disponibles")
-                                    .font(.system(size:25))
-                                    .fontWeight(.heavy)
-                                Spacer()
-                            }
-                            HStack() {
-                                Text("à la lecture")
-                                    .foregroundColor(.gray)
-                                Spacer()
-                            }
+                    Divider()
+                        .padding(.horizontal, 20)
+                    CarouselView(books: books, title: "Récents")
+                        .background(
+                            LinearGradient(gradient: Gradient(colors: [.white, Color(red: 0.95, green: 0.95, blue: 0.95)]), startPoint: .center, endPoint: .bottom))
+                        .padding(.top, 15)
+                        //.background(Color.gray.opacity(0.2))
+                    
+                    VStack {
+                        HStack {
+                            Text("Livres disponibles")
+                                .font(.system(size:25))
+                                .fontWeight(.heavy)
                             Spacer()
                         }
-                        Spacer()
-                    }
-                    .frame(width: (screenWidth * 0.9) )
-                    .padding(.bottom, 10)
-                    Divider()
-                        .frame(width: (screenWidth * 0.9) )
-                    Spacer()*/
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(books, id: \.id) { book in
-                            NavigationLink(destination: BookDetails(book: book)) {
-                                VStack {
-                                    AsyncImage(url: URL(string: book.imageUrl)) { image in
-                                        image
-                                            .resizable()
-                                            .scaledToFit()
-                                            .cornerRadius(12)
-                                            .padding(.horizontal, 10)
-                                    } placeholder: {
-                                        Image("clean-code")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .padding(.horizontal, 10)
-                                    }
-                                    .aspectRatio(4/3, contentMode: .fill)
-                                    Text(book.title)
-                                        .font(.system(size: 10, weight: .bold))
-                                        .minimumScaleFactor(0.85)
-                                        .allowsTightening(true)
-                                        .lineLimit(1)
-                                    Text("par \(book.authors.joined(separator: ", "))")
-                                        .font(.system(size: 10, weight: .bold))
-                                        .foregroundColor(.gray)
-                                }
-                                
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(books, id: \.id) { book in
+                                //NavigationLink(destination: BookDetails(book: book)) {
+                                        VStack {
+                                            ZStack {
+                                                VStack {
+                                                    HStack {
+                                                        Spacer()
+                                                        Menu {
+                                                            Button("Details") {
+                                                                detailsWantedBook = book
+                                                                detailsWanted = true
+                                                            }
+                                                        } label: {
+                                                            Image(systemName: "ellipsis")
+                                                                .resizable()
+                                                                .scaledToFit()
+                                                                .frame(width: 10, height: 10, alignment: .leading)
+                                                                .padding(.horizontal, 15)
+                                                                .rotationEffect(.degrees(90))
+                                                                .foregroundColor(.gray)
+                                                        }
+                                                    }
+                                                    if let book = detailsWantedBook {
+                                                        NavigationLink(destination: BookDetails(book: book), isActive: $detailsWanted) {
+                                                            EmptyView()
+                                                        }
+                                                    }
+                
+                                                    Spacer()
+                                                }
+                                                AsyncImage(url: URL(string: book.imageUrl)) { image in
+                                                    image
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .cornerRadius(12)
+                                                        .padding(.horizontal, 10)
+                                                } placeholder: {
+                                                    Image("clean-code")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .padding(.horizontal, 10)
+                                                }
+                                                .aspectRatio(4/3, contentMode: .fill)
+                                            }
+
+                                            Text(book.title)
+                                                .font(.system(size: 15, weight: .bold))
+                                                .minimumScaleFactor(0.90)
+                                                .allowsTightening(true)
+                                                .lineLimit(1)
+                                                .padding(.horizontal, 30)
+        
+                                            HStack {
+                                                Text("par \(book.authors.joined(separator: ", "))")
+                                                    .font(.system(size: 12, weight: .bold))
+                                                    .foregroundColor(.gray)
+                                                    .allowsTightening(true)
+                                                    .lineLimit(1)
+                                                    .padding(.horizontal, 30)
+                                            }
+                                        }.contextMenu {
+                                            Button("Details") {
+                                                detailsWantedBook = book
+                                                detailsWanted = true
+                                            }
+                                        }
+                                    
+                                //} .accentColor(.black)
                             }
-                                .accentColor(.black)
                         }
-                        .contextMenu {
-                            Text("plgdkbm")
-                        }
-                    }.padding(.horizontal)
+                    }.navigationTitle("Mes livres")
+                        .padding(.vertical, 30)
+                        .padding(.horizontal)
                 }
+                
             }
-            .navigationTitle("Livres disponibles")
-            .padding(.vertical, 30)
             //.navigationBarTitleDisplayMode(.inline)
         }
     }

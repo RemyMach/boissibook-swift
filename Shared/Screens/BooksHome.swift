@@ -17,18 +17,14 @@ struct BooksHome: View {
     
     @State private var requestIsLoading: Bool = false;
     
-    @AppStorage("booksFromHome") var booksStorage: Data = Data();
+    @AppStorage("booksFromHome") var booksStorage: Data?
     
     init() {
-        let table = [0, 1, 2, 3, 4]
-        let ou = table[2...4]
-        print(ou)
-        for i in 0..<2 {
-            print(i)
-        }
         do {
-            let booksDecoded = try JSONDecoder().decode([Book].self, from: booksStorage)
-            _books = State(initialValue: booksDecoded)
+            if booksStorage != nil {
+                let booksDecoded = try JSONDecoder().decode([Book].self, from: booksStorage!)
+                _books = State(initialValue: booksDecoded)
+            }
         } catch {
             print("error in decode booStorage")
             print(error)
@@ -36,29 +32,48 @@ struct BooksHome: View {
     }
     
     var body: some View {
-        ZStack {
-            NavigationView {
+        NavigationView {
+            ScrollView {
                 VStack {
-                    List {
-                        if (self.requestIsLoading) {
-                            HStack {
-                                Spacer()
-                                LoadingView()
-                                Spacer()
-                            }
+                    Divider()
+                        .padding(.horizontal, 20)
+                    if (self.requestIsLoading) {
+                        HStack {
+                            Spacer()
+                            LoadingView()
+                            Spacer()
                         }
-                        if(books.count > 0) {
-                            ForEach(searchText == "" ? books: books.filter { $0.title.contains(searchText)}, id: \.id) { book in
-                                NavigationLink(destination: BookDetails(book: book)) {
-                                    BookCellView(book: book)
+                    }
+                    if(self.searchText == "") {
+                        CarouselView(books: books, title: "Populaire")
+                            .background(
+                                LinearGradient(gradient: Gradient(colors: [.white, Color(red: 0.95, green: 0.95, blue: 0.95)]), startPoint: .center, endPoint: .bottom))
+                            .padding(.top, 5) 
+                    }
+                    VStack {
+                        HStack {
+                            Text("Toute la Bibliothèque")
+                                .font(.system(size:25))
+                                .fontWeight(.heavy)
+                                .padding(.horizontal, 15)
+                                .padding(.top, 30)
+                            Spacer()
+                        }
+                        LazyVStack {
+                            if(books.count > 0) {
+                                ForEach(searchText == "" ? books: books.filter { $0.title.contains(searchText)}, id: \.id) { book in
+                                    Divider().padding(.horizontal, 15)
+                                    NavigationLink(destination: BookDetails(book: book)) {
+                                        BookCellView(book: book)
+                                    }
+                                        .accentColor(.black)
+                                    }
+                            }else {
+                                VStack {
+                                    Spacer()
+                                    Text("Vous n'avez pas encore de livre")
+                                    Spacer()
                                 }
-                                    .accentColor(.black)
-                                }
-                        }else {
-                            VStack {
-                                Spacer()
-                                Text("Vous n'avez pas encore de livre")
-                                Spacer()
                             }
                         }
                     }
@@ -91,10 +106,12 @@ struct BooksHome: View {
                           }
                         }
                     }
-                }.searchable(text:$searchText)
-                .navigationTitle("Bibliothèque")
-                .navigationBarTitleDisplayMode(.large)
-                Spacer()
+                    .searchable(text:$searchText, prompt: "Rechercher dans la biliothèque")
+                    .navigationTitle("Bibliothèque")
+                        .navigationBarTitleDisplayMode(.large)
+                        Spacer()
+               }
+                    
             }
         }
     }
