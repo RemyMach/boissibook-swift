@@ -72,7 +72,7 @@ extension URLSession {
             
                     completionHandler(.success("the book has been added"))
                     
-                }catch(let error) {
+                } catch(let error) {
                     print(error.localizedDescription)
                 }
             } else {

@@ -77,34 +77,34 @@ struct BooksHome: View {
                                 }
                             }
                         }
-                        .listStyle(.plain)
-                        .onAppear {
-                            requestIsLoading = true;
-                            URLSession.shared.getBooks(at: url) { result in
-                                switch result {
-                                    case .success(let books):
-                                        self.requestIsLoading = false;
-                                        self.books = books.map {Book(
-                                            id: $0.apiId,
-                                            title: $0.title, authors: $0.authors ?? ["non connu"],
-                                            imageUrl: $0.imgUrl ?? "https://complianz.io/wp-content/uploads/2019/03/placeholder-705x474.jpg", description: $0.description)}
-                                        
-                                        guard let booksEncode = try? JSONEncoder().encode(self.books) else {
-                                            print("Invalid encode books")
-                                            return
-                                        }
-                                        print("get book home request success")
-                                        self.booksStorage = booksEncode
-                                        print(self.booksStorage)
-                                        //print(self.books)
-                                        break
-                                    case .failure(let error):
-                                        print("error when get books")
-                                        print(error)
-                                        self.requestIsLoading = false;
-                                        break
-                              }
-                            }
+                    }
+                    .listStyle(.plain)
+                    .onAppear {
+                        requestIsLoading = true;
+                        URLSession.shared.getBooks(at: url) { result in
+                            switch result {
+                                case .success(let books):
+                                    self.requestIsLoading = false;
+                                    self.books = books.map {Book(
+                                        id: $0.id,
+                                        title: $0.title, authors: $0.authors ?? ["non connu"],
+                                        imageUrl: $0.imgUrl ?? "https://complianz.io/wp-content/uploads/2019/03/placeholder-705x474.jpg", description: $0.description)}
+                                    
+                                    guard let booksEncode = try? JSONEncoder().encode(self.books) else {
+                                        print("Invalid encode books")
+                                        return
+                                    }
+                                    print("get book home request success")
+                                    self.booksStorage = booksEncode
+                                    print(self.booksStorage)
+                                    //print(self.books)
+                                    break
+                                case .failure(let error):
+                                    print("error when get books")
+                                    print(error)
+                                    self.requestIsLoading = false;
+                                    break
+                          }
                         }
                     }
                     .searchable(text:$searchText, prompt: "Rechercher dans la biliothèque")
