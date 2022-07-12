@@ -6,15 +6,30 @@
 //
 
 import SwiftUI
+import PDFKit
 
 struct PdfBookView: View {
+    let data: Data
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        PDFKitRepresentedView(data)
     }
 }
 
-struct PdfBookView_Previews: PreviewProvider {
-    static var previews: some View {
-        PdfBookView()
+struct PDFKitRepresentedView: UIViewRepresentable {
+    let data: Data
+    init(_ data: Data) {
+        self.data = data
+    }
+
+    func makeUIView(context: UIViewRepresentableContext<PDFKitRepresentedView>) -> PDFKitRepresentedView.UIViewType {
+        let pdfView = PDFView()
+        pdfView.document = PDFDocument(data: self.data)
+        pdfView.autoScales = true
+        return pdfView
+    }
+
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<PDFKitRepresentedView>) {
+        // Update the view.
     }
 }
