@@ -8,7 +8,7 @@
 import Foundation
 
 
-public struct Book : Identifiable, Codable {
+public struct Book: Identifiable, Codable {
     public let id: String;
     public let title: String;
     public let authors: [String]
