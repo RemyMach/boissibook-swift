@@ -110,15 +110,19 @@ struct BookDetails: View {
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
                     } else if isBookFileAvailable {
+                        NavigationLink(destination: PdfBookView(data: bookFile!.bookData!)) {
+                            Text("Open")
+                        }
                         Button("Ouvrir") {
                             // Open bookfile in epub reader
                         }
-                                .buttonStyle(.bordered)
-                                .buttonBorderShape(.roundedRectangle(radius: 20))
-                                .frame(height: 48)
-                                .foregroundColor(.blue)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
+                        .buttonStyle(.bordered)
+                        .buttonBorderShape(.roundedRectangle(radius: 20))
+                        .frame(height: 48)
+                        .foregroundColor(.blue)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        
                     } else if bookFile != nil {
                         Button("Obtenir") {
                             isBookFileDownloading = true
@@ -135,12 +139,12 @@ struct BookDetails: View {
                                 }
                             }
                         }
-                                .buttonStyle(.bordered)
-                                .buttonBorderShape(.roundedRectangle(radius: 20))
-                                .frame(height: 48)
-                                .foregroundColor(.blue)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
+                        .buttonStyle(.bordered)
+                        .buttonBorderShape(.roundedRectangle(radius: 20))
+                        .frame(height: 48)
+                        .foregroundColor(.blue)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
                     } else {
                         // No download available
                         Text("Pas de téléchargement disponible")
