@@ -13,6 +13,7 @@ struct BookDetails: View {
     @State var bookFileUrl: URL?;
 
     let book: Book;
+    @State private var isShowingBook = false;
 
     @State private var isBookFileAvailable: Bool = false;
     @State private var isBookFileDownloading: Bool = false;
@@ -110,11 +111,11 @@ struct BookDetails: View {
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
                     } else if isBookFileAvailable {
-                        NavigationLink(destination: PdfBookView(data: bookFile!.bookData!)) {
-                            Text("Open")
-                        }
-                        Button("Ouvrir") {
+                        Button(action: {
+                            isShowingBook.toggle()
+                        }) {
                             // Open bookfile in epub reader
+                            Text("Lire")
                         }
                         .buttonStyle(.bordered)
                         .buttonBorderShape(.roundedRectangle(radius: 20))
@@ -122,8 +123,21 @@ struct BookDetails: View {
                         .foregroundColor(.blue)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
+                        .sheet(isPresented: $isShowingBook) {
+                            HStack {
+                                Spacer()
+                                Button(action: {
+                                    self.isShowingBook = false
+                                }) {
+                                    Text("Fermer")
+                                }
+                                .padding(6)
+                                .buttonStyle(.borderless)
+                            }.padding(EdgeInsets(top: 5, leading: 10, bottom: -4, trailing: 10))
+                            PdfBookView(data: bookFile!.bookData!)
+                        }
                         
-                    } else if bookFile != nil {
+                    } else if bookFile != nil && bookFileUrl != nil {
                         Button("Obtenir") {
                             isBookFileDownloading = true
                             URLSession.shared.downloadBook(at: bookFileUrl!) { result in
