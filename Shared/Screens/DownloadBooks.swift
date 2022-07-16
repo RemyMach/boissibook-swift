@@ -72,7 +72,7 @@ struct DownloadBooks: View {
             .padding(.top, 15)
     }
     
-    fileprivate func displayDetailButton(book) -> Button<Text> {
+    fileprivate func displayDetailButton(_ book: Book) -> Button<Text> {
         return Button("Details") {
             detailsWantedBook = book
             detailsWanted = true
