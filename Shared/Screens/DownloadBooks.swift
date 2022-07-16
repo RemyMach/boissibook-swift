@@ -130,7 +130,6 @@ struct DownloadBooks: View {
                         .padding(.vertical, 30)
                         .padding(.horizontal)
                 }
-                
             }
         }
     }

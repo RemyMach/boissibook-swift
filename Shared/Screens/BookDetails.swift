@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+enum BookAvailability {
+    case NotAvailable;
+    case Available;
+    case Downloading;
+}
+
 struct BookDetails: View {
 
     @State var url: URL?;
@@ -15,8 +21,7 @@ struct BookDetails: View {
     let book: Book;
     @State private var isShowingBook = false;
 
-    @State private var isBookFileAvailable: Bool = false;
-    @State private var isBookFileDownloading: Bool = false;
+    @State private var bookAvailability: BookAvailability = BookAvailability.NotAvailable;
 
     @State private var bookFile: BookFile? = nil;
     @AppStorage("booksFiles") var booksFileStorage: Data?;
@@ -48,7 +53,7 @@ struct BookDetails: View {
                 }
                 booksFileStorage = bookFilesEncode
             }
-            isBookFileAvailable = true
+            bookAvailability = BookAvailability.Available
         } catch {
             print("error in add book to file storage")
             print(error)
@@ -97,7 +102,7 @@ struct BookDetails: View {
                         UIKLabel(description, maxWidth: screenWidth * 0.8)
                         .padding()
                     }
-                    if isBookFileDownloading {
+                    if bookAvailability == BookAvailability.Downloading {
                         // Loading spinner button
                         HStack {
                             Spacer()
@@ -110,11 +115,10 @@ struct BookDetails: View {
                         .foregroundColor(.blue)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
-                    } else if isBookFileAvailable {
+                    } else if bookAvailability == BookAvailability.Available {
                         Button(action: {
                             isShowingBook.toggle()
                         }) {
-                            // Open bookfile in epub reader
                             Text("Lire")
                         }
                         .buttonStyle(.bordered)
@@ -139,15 +143,15 @@ struct BookDetails: View {
                         
                     } else if bookFile != nil && bookFileUrl != nil {
                         Button("Obtenir") {
-                            isBookFileDownloading = true
+                            bookAvailability = BookAvailability.Downloading
                             URLSession.shared.downloadBook(at: bookFileUrl!) { result in
                                 switch result {
                                 case .success(let data):
                                     self.bookFile?.bookData = data
-                                    isBookFileDownloading = false
+                                    bookAvailability = BookAvailability.Available
                                     addBookFileToStorage(bookFile: bookFile!)
                                 case .failure(let error):
-                                    isBookFileDownloading = false
+                                    bookAvailability = BookAvailability.NotAvailable
                                     print("error in downloadBook")
                                     print(error)
                                 }
@@ -173,7 +177,9 @@ struct BookDetails: View {
                     if booksFileStorage != nil {
                         let booksFilesDecoded = try JSONDecoder().decode([BookFile].self, from: booksFileStorage!)
                         bookFile = booksFilesDecoded.first(where: { $0.bookId == book.id })
-                        isBookFileAvailable = bookFile != nil
+                        if bookFile != nil {
+                            bookAvailability = BookAvailability.Available
+                        }
                     }
                 } catch {
                     print("error in decode booksFileStorage")
