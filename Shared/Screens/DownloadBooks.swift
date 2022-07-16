@@ -19,6 +19,15 @@ struct DownloadBooks: View {
     
     let screenWidth = UIScreen.main.bounds.size.width
     
+    let ellipsis: some View = Image(systemName: "ellipsis")
+        .resizable()
+        .scaledToFit()
+        .frame(width: 10, height: 10, alignment: .leading)
+        .padding(.horizontal, 15)
+        .rotationEffect(.degrees(90))
+        .foregroundColor(.gray)
+    
+    
     @State var detailsWantedBook: Book? = nil
     @State var detailsWanted = false
 
@@ -32,24 +41,59 @@ struct DownloadBooks: View {
         }
     }
     
+    fileprivate func displayImage(_ book: Book) -> some View {
+        return AsyncImage(url: URL(string: book.imageUrl)) { image in
+            image
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(12)
+                .padding(.horizontal, 10)
+        } placeholder: {
+            Image("clean-code")
+                .resizable()
+                .scaledToFit()
+                .padding(.horizontal, 10)
+        }
+        .aspectRatio(4/3, contentMode: .fill)
+    }
+    
+    fileprivate func recentBook() -> some View {
+        return CarouselView(books: books, title: "Récents")
+            .background(
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        .white,
+                        Color(red: 0.95, green: 0.95, blue: 0.95)
+                    ]),
+                    startPoint: .center,
+                    endPoint: .bottom
+                )
+            )
+            .padding(.top, 15)
+    }
+    
+    fileprivate func displayDetailButton(book) -> Button<Text> {
+        return Button("Details") {
+            detailsWantedBook = book
+            detailsWanted = true
+        }
+    }
+    
+    fileprivate func displayMenu(_ book: Book) -> Menu<some View, Button<Text>> {
+        return Menu {
+            displayDetailButton(book)
+        } label: {
+            ellipsis
+        }
+    }
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
                     Divider()
                         .padding(.horizontal, 20)
-                    CarouselView(books: books, title: "Récents")
-                        .background(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    .white,
-                                    Color(red: 0.95, green: 0.95, blue: 0.95)
-                                ]),
-                               startPoint: .center,
-                               endPoint: .bottom
-                            )
-                        )
-                        .padding(.top, 15)
+                    recentBook()
                     VStack {
                         HStack {
                             Text("Livres disponibles")
@@ -64,20 +108,7 @@ struct DownloadBooks: View {
                                         VStack {
                                             HStack {
                                                 Spacer()
-                                                Menu {
-                                                    Button("Details") {
-                                                        detailsWantedBook = book
-                                                        detailsWanted = true
-                                                    }
-                                                } label: {
-                                                    Image(systemName: "ellipsis")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: 10, height: 10, alignment: .leading)
-                                                        .padding(.horizontal, 15)
-                                                        .rotationEffect(.degrees(90))
-                                                        .foregroundColor(.gray)
-                                                }
+                                                displayMenu(book)
                                             }
                                             if let book = detailsWantedBook {
                                                 NavigationLink(destination: BookDetails(book: book), isActive: $detailsWanted) {
@@ -87,19 +118,7 @@ struct DownloadBooks: View {
         
                                             Spacer()
                                         }
-                                        AsyncImage(url: URL(string: book.imageUrl)) { image in
-                                            image
-                                                .resizable()
-                                                .scaledToFit()
-                                                .cornerRadius(12)
-                                                .padding(.horizontal, 10)
-                                        } placeholder: {
-                                            Image("clean-code")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .padding(.horizontal, 10)
-                                        }
-                                        .aspectRatio(4/3, contentMode: .fill)
+                                        displayImage(book)
                                     }
 
                                     Text(book.title)
@@ -118,10 +137,7 @@ struct DownloadBooks: View {
                                             .padding(.horizontal, 30)
                                     }
                                 }.contextMenu {
-                                    Button("Details") {
-                                        detailsWantedBook = book
-                                        detailsWanted = true
-                                    }
+                                    displayDetailButton(book)
                                 }
                             }
                         }
