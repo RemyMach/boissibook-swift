@@ -13,8 +13,6 @@ struct SearchBook: View {
     
     let screenWidth = UIScreen.main.bounds.size.width
     
-    //@State private var searchText = @StateObject var debounceObject = DebounceObject()
-    
     @StateObject var searchText = DebounceObject()
     
     @State private var requestIsLoading: Bool = false;
