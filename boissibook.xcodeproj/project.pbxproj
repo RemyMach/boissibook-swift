@@ -18,8 +18,6 @@
 		AD0D19B4287314BC0023FB46 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19B2287314BC0023FB46 /* Book.swift */; };
 		AD0D19B6287316E90023FB46 /* BookDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19B5287316E90023FB46 /* BookDto.swift */; };
 		AD0D19B7287316E90023FB46 /* BookDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19B5287316E90023FB46 /* BookDto.swift */; };
-		AD0D19B928732D1C0023FB46 /* BookHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19B828732D1C0023FB46 /* BookHeader.swift */; };
-		AD0D19BA28732D1C0023FB46 /* BookHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19B828732D1C0023FB46 /* BookHeader.swift */; };
 		AD0D19BC287483420023FB46 /* DownloadBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19BB287483420023FB46 /* DownloadBooks.swift */; };
 		AD0D19BD287483420023FB46 /* DownloadBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19BB287483420023FB46 /* DownloadBooks.swift */; };
 		AD43001C2870824B005D64B8 /* GetBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43001B2870824B005D64B8 /* GetBooks.swift */; };
@@ -72,7 +70,6 @@
 		AD0D19AE287310420023FB46 /* BookDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetails.swift; sourceTree = "<group>"; };
 		AD0D19B2287314BC0023FB46 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		AD0D19B5287316E90023FB46 /* BookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDto.swift; sourceTree = "<group>"; };
-		AD0D19B828732D1C0023FB46 /* BookHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHeader.swift; sourceTree = "<group>"; };
 		AD0D19BB287483420023FB46 /* DownloadBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadBooks.swift; sourceTree = "<group>"; };
 		AD43001B2870824B005D64B8 /* GetBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBooks.swift; sourceTree = "<group>"; };
 		AD430022287090AD005D64B8 /* boissibook--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "boissibook--iOS--Info.plist"; sourceTree = "<group>"; };
@@ -220,7 +217,6 @@
 				ADEBA9D328703F640083D038 /* BookCellView.swift */,
 				ADAA56A62870455200A2B960 /* CircleView.swift */,
 				ADC20A3A2872BDC800FF7206 /* BookCellViewAdd.swift */,
-				AD0D19B828732D1C0023FB46 /* BookHeader.swift */,
 				ADB50B442874E99E00DFA47F /* LoadingView.swift */,
 				ADB50B4A2875DB1400DFA47F /* CarouselView.swift */,
 				ADB50B4D2875DC4300DFA47F /* Carousel.swift */,
@@ -352,7 +348,6 @@
 				ADAA56AE28704DDB00A2B960 /* AudioPlayer.swift in Sources */,
 				ADAA56A42870420300A2B960 /* Home.swift in Sources */,
 				ADAA56A72870455200A2B960 /* CircleView.swift in Sources */,
-				AD0D19B928732D1C0023FB46 /* BookHeader.swift in Sources */,
 				AD5A593F287A1A0300C462F0 /* CarouselBookView.swift in Sources */,
 				ADC20A3E2872C1D200FF7206 /* AddBook.swift in Sources */,
 				AD0D19AF287310420023FB46 /* BookDetails.swift in Sources */,
@@ -386,7 +381,6 @@
 				AD0D19B7287316E90023FB46 /* BookDto.swift in Sources */,
 				AD43002B2871BE5E005D64B8 /* SearchBooks.swift in Sources */,
 				AD4300282871BCC4005D64B8 /* SearchBook.swift in Sources */,
-				AD0D19BA28732D1C0023FB46 /* BookHeader.swift in Sources */,
 				AD4300252871BB37005D64B8 /* TabMenu.swift in Sources */,
 				ADEBA9CF286E39950083D038 /* BooksHome.swift in Sources */,
 				AD43002E2871C3E5005D64B8 /* SearchBookDto.swift in Sources */,

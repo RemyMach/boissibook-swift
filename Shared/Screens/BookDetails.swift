@@ -160,10 +160,9 @@ struct BookDetails: View {
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
                     } else {
-                        // No download available
                         Text("Pas de téléchargement disponible")
-                                .foregroundColor(.gray)
-                                .padding(.horizontal, 12)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal, 12)
                     }
                 }
             }

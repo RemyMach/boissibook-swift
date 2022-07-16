@@ -52,6 +52,11 @@ struct BookCellView_Previews: PreviewProvider {
     static var previews: some View {
         let imageUrl = "http://books.google.com/books/content?id=4JvFjE4dlGMC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72a0sty87mX89qFzThmMep58LL-21RmYul2uCeEmvFvdUF_lUmgh2uWGFi1TSSUvLSxRQ94YzlGimUzKMFIlHAzryMchKmYJOpdYtC6atb9qHx5VnQcBLWkzWxLQfbwDJO73Osk&source=gbs_api";
         BookCellView(book: Book(
-            id: "1", title: "Clean Code", authors: ["martin Fowler"], imageUrl: imageUrl, description: "description example"))
+            id: "1",
+            title: "Clean Code",
+            authors: ["martin Fowler"],
+            imageUrl: imageUrl,
+            description: "description example"
+        ))
     }
 }

@@ -14,12 +14,6 @@ struct LoadingView: View {
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle())
                 .scaleEffect(1)
-            
-            /*ProgressView("Loading...", value: progress, total: 100)
-                .progressViewStyle(LinearProgressViewStyle())
-                .scaleEffect(1)
-                .padding(.vertical, 10)*/
-            //Text("Loading...")
         }
     }
 }
