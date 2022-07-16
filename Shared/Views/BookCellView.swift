@@ -40,13 +40,7 @@ struct BookCellView: View {
             
             Spacer()
             Image(systemName: "chevron.right")
-                            .foregroundColor(.gray)
-            /*Button("Details".uppercased()) {}
-            .font(.system(size: 14, weight: .bold))
-            .foregroundColor(.white)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 6)
-            .background(Capsule().foregroundColor(Color(white: 0, opacity: 0.2)))*/
+                .foregroundColor(.gray)
 
         }
         .padding(16)
@@ -55,11 +49,9 @@ struct BookCellView: View {
 }
 
 struct BookCellView_Previews: PreviewProvider {
-    //@State static var book: Book = Book(title: "Clean Code")
-
     static var previews: some View {
-        //BookCellView(book: $book)
+        let imageUrl = "http://books.google.com/books/content?id=4JvFjE4dlGMC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72a0sty87mX89qFzThmMep58LL-21RmYul2uCeEmvFvdUF_lUmgh2uWGFi1TSSUvLSxRQ94YzlGimUzKMFIlHAzryMchKmYJOpdYtC6atb9qHx5VnQcBLWkzWxLQfbwDJO73Osk&source=gbs_api";
         BookCellView(book: Book(
-            id: "1", title: "Clean Code", authors: ["martin Fowler"], imageUrl: "http://books.google.com/books/content?id=4JvFjE4dlGMC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72a0sty87mX89qFzThmMep58LL-21RmYul2uCeEmvFvdUF_lUmgh2uWGFi1TSSUvLSxRQ94YzlGimUzKMFIlHAzryMchKmYJOpdYtC6atb9qHx5VnQcBLWkzWxLQfbwDJO73Osk&source=gbs_api", description: "description example"))
+            id: "1", title: "Clean Code", authors: ["martin Fowler"], imageUrl: imageUrl, description: "description example"))
     }
 }

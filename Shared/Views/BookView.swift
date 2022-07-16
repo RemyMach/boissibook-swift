@@ -15,14 +15,21 @@ struct BookView: View {
     
     let bookElement: BookElementList
     
+    let button: some View = Button("Details".uppercased()) {}
+        .font(.system(size: 14, weight: .bold))
+        .padding(.horizontal, 8)
+        .background(Capsule().foregroundColor(Color(white: 0, opacity: 0.2)));
+    
+    let image: some View = Image("clean-code")
+        .resizable()
+        .frame(width: 48, height: 48)
+        .cornerRadius(12);
+    
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
                 HStack {
-                    Image("clean-code")
-                        .resizable()
-                        .frame(width: 48, height: 48)
-                        .cornerRadius(12)
+                    image
                     VStack(alignment: .leading) {
                         Text(bookElement.title)
                             .bold()
@@ -31,11 +38,7 @@ struct BookView: View {
                             .foregroundColor(.gray)
                     }
                     Spacer()
-                    Button("Details".uppercased()) {}
-                    .font(.system(size: 14, weight: .bold))
-                    .padding(.horizontal, 8)
-                    .background(Capsule().foregroundColor(Color(white: 0, opacity: 0.2)))
-
+                    button
                 }
                 .padding(16)
                 .background(Color.white)
