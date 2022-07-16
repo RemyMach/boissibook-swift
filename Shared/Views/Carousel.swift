@@ -47,45 +47,32 @@ struct Carousel: View {
     }
     
     var body: some View {
-        /*HStack {
-            Text(categoryName)
-                .font(.system(size: 14, weight: .heavy))
-                .padding(.vertical, 6)
-                .padding(.horizontal, 12)
-                .background(Color.red)
-                .foregroundColor(.white)
-                .cornerRadius(2)
-            Spacer()
-        }.padding(.horizontal)
-        .padding(.top)*/
-
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 16) {
-                        ForEach(books, id: \.id) { book in
-                            GeometryReader { proxy in
-                                let scale = getScale(proxy: proxy)
-                                
-                                //TODO mettre les résultats inverse quand on aura un storage de ce qui est téléchargé
-                                if(booksDownloads.contains(where: {$0.id == book.id})) {
-                                    NavigationLink(
-                                       destination: BookDetails(book: book),
-                                       label: {
-                                           CarouselBookView(book: book, scale: scale)
-                                        })
-                                } else {
-                                    CarouselBookView(book: book, scale: scale)
-                                }
-                                    
-                            }
-                            .frame(width: 125, height: 290)
-                            .padding(.horizontal, 32)
-                            .padding(.vertical, 32)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: 16) {
+                ForEach(books, id: \.id) { book in
+                    GeometryReader { proxy in
+                        let scale = getScale(proxy: proxy)
+                        
+                        //TODO mettre les résultats inverse quand on aura un storage de ce qui est téléchargé
+                        if(booksDownloads.contains(where: {$0.id == book.id})) {
+                            NavigationLink(
+                               destination: BookDetails(book: book),
+                               label: {
+                                   CarouselBookView(book: book, scale: scale)
+                                })
+                        } else {
+                            CarouselBookView(book: book, scale: scale)
                         }
-                        Spacer()
-                            .frame(width: 16)
+                            
                     }
-                
+                    .frame(width: 125, height: 290)
+                    .padding(.horizontal, 32)
+                    .padding(.vertical, 32)
+                }
+                Spacer()
+                    .frame(width: 16)
             }
+        }
     }
 }
 

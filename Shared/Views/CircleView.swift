@@ -11,20 +11,30 @@ struct CircleView: View {
     
     @State var ShapeOpacity: Double
     @State private var isAnimating: Bool = false
+    let animationDuration: Double = 1
+    let opacityDuringAnimation: Double = 1
+    let opacityWithoutAnimation: Double = 0
+    let blurDuringAnimation: Double = 0
+    let blurWithoutAnimation: Double = 10
+    let scaleEffectDuringAnimation: Double = 1
+    let scaleEffectWithoutAniation: Double = 0.5
+    
+    let backgroundCircleSize: Double = 260
+    let defaultLineWidth: Double = 40
     
     var body: some View {
         ZStack {
           Circle()
-                .stroke(.gray.opacity(ShapeOpacity), lineWidth: 40)
-            .frame(width: 260, height: 260, alignment: .center)
+            .stroke(.gray.opacity(ShapeOpacity), lineWidth: defaultLineWidth)
+            .frame(width: backgroundCircleSize, height: backgroundCircleSize, alignment: .center)
           Circle()
-                .stroke(.gray.opacity(ShapeOpacity), lineWidth: 80)
-            .frame(width: 260, height: 260, alignment: .center)
-        } //: ZSTACK
-        .blur(radius: isAnimating ? 0 : 10)
-        .opacity(isAnimating ? 1 : 0)
-        .scaleEffect(isAnimating ? 1 : 0.5)
-        .animation(.easeOut(duration: 1), value: isAnimating)
+            .stroke(.gray.opacity(ShapeOpacity), lineWidth: defaultLineWidth * 2)
+            .frame(width: backgroundCircleSize, height: backgroundCircleSize, alignment: .center)
+        }
+        .blur(radius: isAnimating ? blurDuringAnimation : blurWithoutAnimation)
+        .opacity(isAnimating ? opacityDuringAnimation : opacityWithoutAnimation)
+        .scaleEffect(isAnimating ? scaleEffectDuringAnimation : scaleEffectWithoutAniation)
+        .animation(.easeOut(duration: animationDuration), value: isAnimating)
         .onAppear(perform: {
           isAnimating = true
         })
