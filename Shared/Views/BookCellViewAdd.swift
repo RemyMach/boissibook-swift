@@ -34,7 +34,7 @@ struct BookCellViewAdd: View {
             Spacer()
             Button(action: {
                 print("j'ai cliqué")
-                URLSession.shared.addBooksV2(withId:book.id) { result in
+                URLSession.shared.addBooks(withId:book.id) { result in
                     switch result {
                         case .success(let message):
                             print("book added with success")
