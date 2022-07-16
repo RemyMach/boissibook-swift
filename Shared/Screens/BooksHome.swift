@@ -95,8 +95,8 @@ struct BooksHome: View {
                                     }
                                     print("get book home request success")
                                     self.booksStorage = booksEncode
-                                    // print(self.booksStorage)
-                                    // print(self.books)
+                                    print(self.booksStorage)
+                                    //print(self.books)
                                     break
                                 case .failure(let error):
                                     print("error when get books")
