@@ -59,6 +59,7 @@
 		ADEBA9D528703F640083D038 /* BookCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEBA9D328703F640083D038 /* BookCellView.swift */; };
 		D4F11162287D6FC000E9618F /* PdfBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F11161287D6FC000E9618F /* PdfBookView.swift */; };
 		D4F11163287D6FC000E9618F /* PdfBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F11161287D6FC000E9618F /* PdfBookView.swift */; };
+		D4F1E2BB28830324006D8D9D /* BookReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F1E2BA28830324006D8D9D /* BookReview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		ADEBA9CD286E39950083D038 /* BooksHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksHome.swift; sourceTree = "<group>"; };
 		ADEBA9D328703F640083D038 /* BookCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellView.swift; sourceTree = "<group>"; };
 		D4F11161287D6FC000E9618F /* PdfBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfBookView.swift; sourceTree = "<group>"; };
+		D4F1E2BA28830324006D8D9D /* BookReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				AD0D19B2287314BC0023FB46 /* Book.swift */,
 				6424CCEDDE4EF89DFDE29C5A /* BookFile.swift */,
+				D4F1E2BA28830324006D8D9D /* BookReview.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -338,7 +341,6 @@
 				ADEBA9BB286E2D8B0083D038 /* ContentView.swift in Sources */,
 				ADEBA9B9286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				ADEBA9CE286E39950083D038 /* BooksHome.swift in Sources */,
-				D4819679287C77B000E21006 /* BookReview.swift in Sources */,
 				AD0D19B6287316E90023FB46 /* BookDto.swift in Sources */,
 				D4F11162287D6FC000E9618F /* PdfBookView.swift in Sources */,
 				ADB50B452874E99E00DFA47F /* LoadingView.swift in Sources */,
@@ -355,6 +357,7 @@
 				AD5A593D2879FFA800C462F0 /* DebounceObject.swift in Sources */,
 				AD0D19BC287483420023FB46 /* DownloadBooks.swift in Sources */,
 				AD0D19B3287314BC0023FB46 /* Book.swift in Sources */,
+				D4F1E2BB28830324006D8D9D /* BookReview.swift in Sources */,
 				ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */,
 				ADB50B4E2875DC4300DFA47F /* Carousel.swift in Sources */,
 				AD4300242871BB37005D64B8 /* TabMenu.swift in Sources */,
@@ -378,7 +381,6 @@
 				AD0D19BD287483420023FB46 /* DownloadBooks.swift in Sources */,
 				ADC20A3C2872BDC800FF7206 /* BookCellViewAdd.swift in Sources */,
 				ADC20A3F2872C1D200FF7206 /* AddBook.swift in Sources */,
-				D481967A287C77B000E21006 /* BookReview.swift in Sources */,
 				ADEBA9BA286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				AD0D19B7287316E90023FB46 /* BookDto.swift in Sources */,
 				AD43002B2871BE5E005D64B8 /* SearchBooks.swift in Sources */,

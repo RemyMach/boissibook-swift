@@ -1,8 +1,8 @@
 //
 //  BookReview.swift
-//  boissibook
+//  boissibook (iOS)
 //
-//  Created by Swann HERRERA on 11/07/2022.
+//  Created by Swann HERRERA on 16/07/2022.
 //
 
 import Foundation

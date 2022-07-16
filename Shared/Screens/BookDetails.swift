@@ -15,8 +15,8 @@ enum BookAvailability {
 
 struct BookDetails: View {
 
-    @State var url: URL?;
-    @State var bookFileUrl: URL?;
+    @State var url: URL? = nil;
+    @State var bookFileUrl: URL? = nil;
 
     let book: Book;
     @State private var isShowingBook = false;
@@ -139,9 +139,7 @@ struct BookDetails: View {
                             }
                         }
                     }.padding(.horizontal)
-                    Button(action: openBook) {
-                        Text("Lire").padding(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))
-                    if isBookFileDownloading {
+                    if bookAvailability == BookAvailability.Downloading {
                         // Loading spinner button
                         HStack {
                             Spacer()
@@ -180,7 +178,7 @@ struct BookDetails: View {
                             PdfBookView(data: bookFile!.bookData!)
                         }
                         
-                    } else if bookFile != nil && bookFileUrl != nil {
+                    } else if bookAvailability == BookAvailability.Available {
                         Button("Obtenir") {
                             bookAvailability = BookAvailability.Downloading
                             URLSession.shared.downloadBook(at: bookFileUrl!) { result in
@@ -200,18 +198,13 @@ struct BookDetails: View {
                         .buttonBorderShape(.roundedRectangle(radius: 20))
                         .frame(height: 48)
                         .foregroundColor(.blue)
+                        .foregroundColor(.blue)
                         .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
                     } else {
                         Text("Pas de téléchargement disponible")
                             .foregroundColor(.gray)
                             .padding(.horizontal, 12)
                     }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.roundedRectangle(radius: 20))
-                    .frame(height: 48)
-                    .foregroundColor(.blue)
-                    .padding(.horizontal, 12)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
