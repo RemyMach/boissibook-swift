@@ -22,9 +22,7 @@ struct boissibookApp: App {
                 }
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                    //message = "yououyoyuy"
-                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {}
             }
         }
     }

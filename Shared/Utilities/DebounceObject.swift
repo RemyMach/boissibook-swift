@@ -17,12 +17,10 @@ public final class DebounceObject: ObservableObject {
         $text
             .removeDuplicates()
             .debounce(for: .seconds(dueTime), scheduler: DispatchQueue.main)
-            //.receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] value in
                 print("on passe dans le sink")
                 self?.debouncedText = value
             })
             .store(in: &bag)
     }
-    
 }
