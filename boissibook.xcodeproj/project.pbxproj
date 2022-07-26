@@ -21,6 +21,7 @@
 		AD0D19BC287483420023FB46 /* DownloadBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19BB287483420023FB46 /* DownloadBooks.swift */; };
 		AD0D19BD287483420023FB46 /* DownloadBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19BB287483420023FB46 /* DownloadBooks.swift */; };
 		AD18FE0E28901A2F00D4DDE9 /* CarouselElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD18FE0D28901A2F00D4DDE9 /* CarouselElement.swift */; };
+		AD18FE12289025BF00D4DDE9 /* MyBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD18FE11289025BF00D4DDE9 /* MyBookView.swift */; };
 		AD43001C2870824B005D64B8 /* GetBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43001B2870824B005D64B8 /* GetBooks.swift */; };
 		AD4300242871BB37005D64B8 /* TabMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300232871BB37005D64B8 /* TabMenu.swift */; };
 		AD4300252871BB37005D64B8 /* TabMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300232871BB37005D64B8 /* TabMenu.swift */; };
@@ -73,6 +74,7 @@
 		AD0D19B5287316E90023FB46 /* BookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDto.swift; sourceTree = "<group>"; };
 		AD0D19BB287483420023FB46 /* DownloadBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadBooks.swift; sourceTree = "<group>"; };
 		AD18FE0D28901A2F00D4DDE9 /* CarouselElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselElement.swift; sourceTree = "<group>"; };
+		AD18FE11289025BF00D4DDE9 /* MyBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookView.swift; sourceTree = "<group>"; };
 		AD43001B2870824B005D64B8 /* GetBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBooks.swift; sourceTree = "<group>"; };
 		AD430022287090AD005D64B8 /* boissibook--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "boissibook--iOS--Info.plist"; sourceTree = "<group>"; };
 		AD4300232871BB37005D64B8 /* TabMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenu.swift; sourceTree = "<group>"; };
@@ -125,6 +127,25 @@
 				6424CCEDDE4EF89DFDE29C5A /* BookFile.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		AD18FE0F28901FCB00D4DDE9 /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				ADB50B4A2875DB1400DFA47F /* CarouselView.swift */,
+				ADB50B4D2875DC4300DFA47F /* Carousel.swift */,
+				AD5A593E287A1A0300C462F0 /* CarouselBookView.swift */,
+				AD18FE0D28901A2F00D4DDE9 /* CarouselElement.swift */,
+			);
+			path = Carousel;
+			sourceTree = "<group>";
+		};
+		AD18FE10289025A600D4DDE9 /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				AD18FE11289025BF00D4DDE9 /* MyBookView.swift */,
+			);
+			path = Book;
 			sourceTree = "<group>";
 		};
 		AD43001928708227005D64B8 /* Services */ = {
@@ -216,15 +237,13 @@
 		ADEBA9C8286E35330083D038 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AD18FE10289025A600D4DDE9 /* Book */,
+				AD18FE0F28901FCB00D4DDE9 /* Carousel */,
 				ADEBA9D328703F640083D038 /* BookCellView.swift */,
 				ADAA56A62870455200A2B960 /* CircleView.swift */,
 				ADC20A3A2872BDC800FF7206 /* BookCellViewAdd.swift */,
 				ADB50B442874E99E00DFA47F /* LoadingView.swift */,
-				ADB50B4A2875DB1400DFA47F /* CarouselView.swift */,
-				ADB50B4D2875DC4300DFA47F /* Carousel.swift */,
 				6424C1FEC41C6D00BD0902DD /* UIKLabel.swift */,
-				AD5A593E287A1A0300C462F0 /* CarouselBookView.swift */,
-				AD18FE0D28901A2F00D4DDE9 /* CarouselElement.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,6 +377,7 @@
 				AD5A593D2879FFA800C462F0 /* DebounceObject.swift in Sources */,
 				AD0D19BC287483420023FB46 /* DownloadBooks.swift in Sources */,
 				AD0D19B3287314BC0023FB46 /* Book.swift in Sources */,
+				AD18FE12289025BF00D4DDE9 /* MyBookView.swift in Sources */,
 				ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */,
 				ADB50B4E2875DC4300DFA47F /* Carousel.swift in Sources */,
 				AD4300242871BB37005D64B8 /* TabMenu.swift in Sources */,

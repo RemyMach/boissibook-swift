@@ -13,6 +13,12 @@ struct DownloadBooks: View {
     
     @AppStorage("booksFromHome") var booksStorage: Data = Data();
     
+    @State private var bookFiles: [BookFile] = [];
+    
+    @AppStorage("booksFiles") var booksFileStorage: Data?;
+    
+    @State private var sheetPresented = false
+    
     let columns = [
             GridItem(.adaptive(minimum: 150, maximum: 200))
     ]
@@ -28,6 +34,16 @@ struct DownloadBooks: View {
             _books = State(initialValue: booksDecoded)
         } catch {
             print("error in decode booStorage")
+            print(error)
+        }
+        
+        do {
+            if booksFileStorage != nil {
+                let bookFilesDecoded = try JSONDecoder().decode([BookFile].self, from: booksFileStorage!)
+                _bookFiles = State(initialValue: bookFilesDecoded)
+            }
+        } catch {
+            print("error in decode bookFileStorage stringify")
             print(error)
         }
     }
@@ -59,6 +75,7 @@ struct DownloadBooks: View {
                         }
                         LazyVGrid(columns: columns, spacing: 20) {
                             ForEach(books, id: \.id) { book in
+                                let bookFile = self.bookFiles.first(where: {$0.bookId == book.id})
                                 VStack {
                                     ZStack {
                                         VStack {
@@ -84,24 +101,32 @@ struct DownloadBooks: View {
                                                     EmptyView()
                                                 }
                                             }
-        
                                             Spacer()
                                         }
-                                        AsyncImage(url: URL(string: book.imageUrl)) { image in
-                                            image
-                                                .resizable()
-                                                .scaledToFit()
-                                                .cornerRadius(12)
-                                                .padding(.horizontal, 10)
-                                        } placeholder: {
-                                            Image("clean-code")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .padding(.horizontal, 10)
+                                        if(bookFile != nil && bookFile?.bookData != nil) {
+                                            Button(action:  {
+                                                sheetPresented = true
+                                            }) {
+                                                MyBookView(book: book)
+                                            }.sheet(isPresented: $sheetPresented) {
+                                                HStack {
+                                                    Spacer()
+                                                    Button(action: {
+                                                        self.sheetPresented = false
+                                                    }) {
+                                                        Text("Fermer")
+                                                    }
+                                                    .padding(6)
+                                                    .buttonStyle(.borderless)
+                                                }.padding(EdgeInsets(top: 5, leading: 10, bottom: -4, trailing: 10))
+                                                PdfBookView(data: bookFile!.bookData!)
+                                            }
+                                        }else {
+                                            NavigationLink(destination: BookDetails(book: book)) {
+                                                MyBookView(book: book)
+                                            } .accentColor(.black)
                                         }
-                                        .aspectRatio(4/3, contentMode: .fill)
                                     }
-
                                     Text(book.title)
                                         .font(.system(size: 15, weight: .bold))
                                         .minimumScaleFactor(0.90)
