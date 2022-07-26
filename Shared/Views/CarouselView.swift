@@ -15,6 +15,24 @@ struct CarouselView: View {
     
     let books: [Book];
     
+    @State private var bookFiles: [BookFile] = [];
+    
+    @AppStorage("booksFiles") var booksFileStorage: Data?;
+    
+    init(books: [Book], title: String) {
+        self.books = books;
+        self.title = title;
+        do {
+            if booksFileStorage != nil {
+                let bookFilesDecoded = try JSONDecoder().decode([BookFile].self, from: booksFileStorage!)
+                _bookFiles = State(initialValue: bookFilesDecoded)
+            }
+        } catch {
+            print("error in decode bookFileStorage stringify")
+            print(error)
+        }
+    }
+    
     let title : String;
     
     var body: some View {
@@ -26,7 +44,7 @@ struct CarouselView: View {
                     .padding(.horizontal, 10)
                 Spacer()
             }
-            Carousel(books: books)
+            Carousel(books: books, bookFiles: bookFiles)
         }
         .padding(.vertical, 20)
     }
