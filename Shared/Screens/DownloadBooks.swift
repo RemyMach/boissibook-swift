@@ -54,7 +54,7 @@ struct DownloadBooks: View {
                 VStack {
                     Divider()
                         .padding(.horizontal, 20)
-                    CarouselView(books: books, title: "Récents")
+                    CarouselView(books: $books, title: "Récents")
                         .background(
                             LinearGradient(
                                 gradient: Gradient(colors: [
@@ -155,6 +155,26 @@ struct DownloadBooks: View {
                         .padding(.vertical, 30)
                         .padding(.horizontal)
                 }
+                .onChange(of: booksStorage, perform: { newBookStorage in
+                    do {
+                        let booksDecoded = try JSONDecoder().decode([Book].self, from: booksStorage)
+                        self.books = booksDecoded
+                    } catch {
+                        print("error in decode booStorage")
+                        print(error)
+                    }
+                })
+                .onChange(of: booksFileStorage, perform: { newBooksFileStorage in
+                    do {
+                        if booksFileStorage != nil {
+                            let bookFilesDecoded = try JSONDecoder().decode([BookFile].self, from: booksFileStorage!)
+                            self.bookFiles = bookFilesDecoded
+                        }
+                    } catch {
+                        print("error in decode bookFileStorage stringify")
+                        print(error)
+                    }
+                })
             }
         }
     }

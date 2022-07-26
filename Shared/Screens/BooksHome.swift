@@ -45,7 +45,7 @@ struct BooksHome: View {
                         }
                     }
                     if(self.searchText == "") {
-                        CarouselView(books: books, title: "Populaire")
+                        CarouselView(books: $books, title: "Populaire")
                             .background(
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(red: 0.95, green: 0.95, blue: 0.95)]), startPoint: .center, endPoint: .bottom))
                             .padding(.top, 5) 

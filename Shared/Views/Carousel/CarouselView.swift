@@ -13,15 +13,15 @@ struct Movie: Hashable {
 
 struct CarouselView: View {
     
-    let books: [Book];
+    @Binding var books: [Book];
     
     @State private var bookFiles: [BookFile] = [];
     
     @AppStorage("booksFiles") var booksFileStorage: Data?;
     
-    init(books: [Book], title: String) {
-        self.books = books;
+    init(books: Binding<[Book]>, title: String) {
         self.title = title;
+        _books = books;
         do {
             if booksFileStorage != nil {
                 let bookFilesDecoded = try JSONDecoder().decode([BookFile].self, from: booksFileStorage!)
@@ -44,14 +44,16 @@ struct CarouselView: View {
                     .padding(.horizontal, 10)
                 Spacer()
             }
-            Carousel(books: books, bookFiles: bookFiles)
+            Carousel(books: $books, bookFiles: $bookFiles)
         }
         .padding(.vertical, 20)
+        
     }
 }
 
 struct CarouselView_Previews: PreviewProvider {
+    @State static var books: [Book] = []
     static var previews: some View {
-        CarouselView(books: [], title: "Récents")
+        CarouselView(books: $books, title: "Récents")
     }
 }

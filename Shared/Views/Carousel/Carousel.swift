@@ -9,9 +9,9 @@ import SwiftUI
 
 struct Carousel: View {
     
-    @State var books: [Book]
+    @Binding var books: [Book]
     
-    @State var bookFiles: [BookFile]
+    @Binding var bookFiles: [BookFile]
     
     
     func getScale(proxy: GeometryProxy) -> CGFloat {
@@ -87,16 +87,10 @@ struct MovieDetailsView: View {
 
 
 struct Carousel_Previews: PreviewProvider {
-    static let moviesGen: [Movie] = [
-        .init(title: "Wonder Woman 1984", imageName: "clean-code"),
-        .init(title: "Avatar", imageName: "clean-code"),
-        .init(title: "Captain Marvel", imageName: "clean-code"),
-        .init(title: "Soul", imageName: "clean-code"),
-        .init(title: "Tenet", imageName: "clean-code"),
-        .init(title: "Avengers: Endgame", imageName: "clean-code"),
-    ]
+    @State static var bookFiles: [BookFile] = []
+    @State static var books: [Book] = []
     static var previews: some View {
-        Carousel(books: [], bookFiles: [])
+        Carousel(books: $books, bookFiles: $bookFiles)
     }
 }
 
