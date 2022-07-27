@@ -30,6 +30,15 @@ struct ToastModifier: ViewModifier {
                         }
                 }else if status == "Network_Problem" {
                     NoNetworkToastView()
+                }else if status == "success_add" {
+                    ReloadBooksToastView()
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+                                withAnimation {
+                                    isShowing = false
+                                }
+                            }
+                        }
                 }
             }
         }

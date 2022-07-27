@@ -13,6 +13,10 @@ struct BookCellViewAdd: View {
     
     @State var isRequestLoad = false
     
+    @State var isAdd = false
+    
+    @Binding var bookIsAdd: Bool;
+    
     @Binding var book: Book;
     let addIcon: some View = Image(systemName: "plus.circle")
         .resizable()
@@ -31,6 +35,8 @@ struct BookCellViewAdd: View {
             switch result {
             case .success(let message):
                 self.isRequestLoad = false
+                self.isAdd = true
+                self.bookIsAdd = true
                 print("book added with success" + message)
                 break
             case .failure(let error):
@@ -69,7 +75,9 @@ struct BookCellViewAdd: View {
                     if(self.isRequestLoad) {
                         LoadingView()
                     }else {
-                        addIcon
+                        if !isAdd {
+                            addIcon
+                        }
                     }
                 }
                 .buttonStyle(.plain)
@@ -83,6 +91,7 @@ struct BookCellViewAdd: View {
 struct BookCellViewAdd_Previews: PreviewProvider {
     
     @State static var downloaded = true
+    @State static var bookIsAdd = false
     @State static var book =  Book(
         id: "1",
         title: "Clean Code",
@@ -94,6 +103,7 @@ struct BookCellViewAdd_Previews: PreviewProvider {
     static var previews: some View {
         BookCellViewAdd(
             downloaded: true,
+            bookIsAdd: $bookIsAdd,
             book: $book
         )
     }

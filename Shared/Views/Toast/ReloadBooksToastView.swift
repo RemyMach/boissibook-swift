@@ -13,7 +13,7 @@ struct ReloadBooksToastView: View {
             Spacer()
             HStack {
                 Image(systemName: "clock")
-                Text("Aller recharger votre bibliothèque pour voir votre ajout")
+                Text("Recharger votre bibliothèque pour voir l'ajout")
                     .font(.footnote)
                 Spacer()
             }

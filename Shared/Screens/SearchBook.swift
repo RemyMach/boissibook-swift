@@ -31,6 +31,8 @@ struct SearchBook: View {
     
     @State private var isShowingToast = false
     
+    @State var bookIsAdd = false
+    
     init() {
         do {
             let booksDecoded = try JSONDecoder().decode([Book].self, from: booksStorage)
@@ -46,7 +48,7 @@ struct SearchBook: View {
         self.downloaded = bookOwned
         print(bookOwned)
         print(book.wrappedValue.title)
-        return BookCellViewAdd(downloaded: bookOwned, book: book)
+        return BookCellViewAdd(downloaded: bookOwned, bookIsAdd: $bookIsAdd, book: book)
     }
     
     
@@ -122,6 +124,7 @@ struct SearchBook: View {
             
             Spacer()
         }.toast(isShowing: $isShowingToast, status: "Error")
+            .toast(isShowing: $bookIsAdd, status: "success_add")
             .toast(isShowing: $networkManager.isDisconnected, status:"Network_Problem")
     }
 }
