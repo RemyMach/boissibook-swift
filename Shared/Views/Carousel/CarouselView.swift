@@ -44,7 +44,7 @@ struct CarouselView: View {
                     .padding(.horizontal, 10)
                 Spacer()
             }
-            Carousel(books: $books, bookFiles: $bookFiles)
+            Carousel(books: $books, bookFiles: $bookFiles, mode: title)
         }
         .padding(.vertical, 20)
         
