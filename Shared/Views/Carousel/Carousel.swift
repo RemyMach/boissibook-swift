@@ -9,24 +9,9 @@ import SwiftUI
 
 struct Carousel: View {
     
-    @State var books: [Book]
+    @Binding var books: [Book]
     
-    @State var booksDownloads: [Book] = []
-    
-    @AppStorage("booksFromHome") var booksStorage: Data?
-    
-    init(books: [Book]) {
-        self.books = books
-        do {
-            if booksStorage != nil {
-                let booksDecoded = try JSONDecoder().decode([Book].self, from: booksStorage!)
-                _booksDownloads = State(initialValue: booksDecoded)
-            }
-        } catch {
-            print("error in decode booStorage")
-            print(error)
-        }
-    }
+    @Binding var bookFiles: [BookFile]
     
     
     func getScale(proxy: GeometryProxy) -> CGFloat {
@@ -52,16 +37,16 @@ struct Carousel: View {
                 ForEach(books, id: \.id) { book in
                     GeometryReader { proxy in
                         let scale = getScale(proxy: proxy)
-                        
+                        let bookFile = self.bookFiles.first(where: {$0.bookId == book.id})
                         //TODO mettre les résultats inverse quand on aura un storage de ce qui est téléchargé
-                        if(booksDownloads.contains(where: {$0.id == book.id})) {
+                        if(bookFiles.contains(where: {$0.id == book.id})) {
                             NavigationLink(
-                               destination: BookDetails(book: book),
+                                destination: CarouselBookView(book: book, bookFile: bookFile, scale: scale), //calculateTheDestinationView(book: book, scale: scale),
                                label: {
-                                   CarouselBookView(book: book, scale: scale)
+                                   CarouselBookView(book: book, bookFile: bookFile, scale: scale)
                                 })
                         } else {
-                            CarouselBookView(book: book, scale: scale)
+                            CarouselBookView(book: book,bookFile: bookFile, scale: scale)
                         }
                             
                     }
@@ -74,6 +59,18 @@ struct Carousel: View {
             }
         }
     }
+    
+    func calculateTheDestinationView(book: Book, scale: CGFloat) -> AnyView {
+        let bookFile = self.bookFiles.first(where: {$0.bookId == book.id})
+        if(bookFile != nil && bookFile?.bookData != nil) {
+            let data = bookFile?.bookData
+            if(data != nil) {
+                //return AnyView(PdfBookView(data: data! ))
+            }
+        }
+        return AnyView(CarouselBookView(book: book,bookFile: nil, scale: scale))
+    }
+        
 }
 
 struct MovieDetailsView: View {
@@ -90,15 +87,10 @@ struct MovieDetailsView: View {
 
 
 struct Carousel_Previews: PreviewProvider {
-    static let moviesGen: [Movie] = [
-        .init(title: "Wonder Woman 1984", imageName: "clean-code"),
-        .init(title: "Avatar", imageName: "clean-code"),
-        .init(title: "Captain Marvel", imageName: "clean-code"),
-        .init(title: "Soul", imageName: "clean-code"),
-        .init(title: "Tenet", imageName: "clean-code"),
-        .init(title: "Avengers: Endgame", imageName: "clean-code"),
-    ]
+    @State static var bookFiles: [BookFile] = []
+    @State static var books: [Book] = []
     static var previews: some View {
-        Carousel(books: [])
+        Carousel(books: $books, bookFiles: $bookFiles)
     }
 }
+

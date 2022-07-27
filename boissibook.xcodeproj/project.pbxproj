@@ -20,6 +20,13 @@
 		AD0D19B7287316E90023FB46 /* BookDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19B5287316E90023FB46 /* BookDto.swift */; };
 		AD0D19BC287483420023FB46 /* DownloadBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19BB287483420023FB46 /* DownloadBooks.swift */; };
 		AD0D19BD287483420023FB46 /* DownloadBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0D19BB287483420023FB46 /* DownloadBooks.swift */; };
+		AD18FE0E28901A2F00D4DDE9 /* CarouselElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD18FE0D28901A2F00D4DDE9 /* CarouselElement.swift */; };
+		AD18FE12289025BF00D4DDE9 /* MyBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD18FE11289025BF00D4DDE9 /* MyBookView.swift */; };
+		AD18FE1628903CD200D4DDE9 /* ErrorToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD18FE1528903CD200D4DDE9 /* ErrorToastView.swift */; };
+		AD18FE18289042FF00D4DDE9 /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD18FE17289042FF00D4DDE9 /* ToastModifier.swift */; };
+		AD18FE1A28904C6000D4DDE9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD18FE1928904C6000D4DDE9 /* NetworkManager.swift */; };
+		AD18FE1C289062C700D4DDE9 /* NoNetworkToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD18FE1B289062C700D4DDE9 /* NoNetworkToastView.swift */; };
+		AD18FE1E2890987100D4DDE9 /* ReloadBooksToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD18FE1D2890987100D4DDE9 /* ReloadBooksToastView.swift */; };
 		AD43001C2870824B005D64B8 /* GetBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43001B2870824B005D64B8 /* GetBooks.swift */; };
 		AD4300242871BB37005D64B8 /* TabMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300232871BB37005D64B8 /* TabMenu.swift */; };
 		AD4300252871BB37005D64B8 /* TabMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4300232871BB37005D64B8 /* TabMenu.swift */; };
@@ -72,6 +79,13 @@
 		AD0D19B2287314BC0023FB46 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		AD0D19B5287316E90023FB46 /* BookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDto.swift; sourceTree = "<group>"; };
 		AD0D19BB287483420023FB46 /* DownloadBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadBooks.swift; sourceTree = "<group>"; };
+		AD18FE0D28901A2F00D4DDE9 /* CarouselElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselElement.swift; sourceTree = "<group>"; };
+		AD18FE11289025BF00D4DDE9 /* MyBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookView.swift; sourceTree = "<group>"; };
+		AD18FE1528903CD200D4DDE9 /* ErrorToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorToastView.swift; sourceTree = "<group>"; };
+		AD18FE17289042FF00D4DDE9 /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
+		AD18FE1928904C6000D4DDE9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AD18FE1B289062C700D4DDE9 /* NoNetworkToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNetworkToastView.swift; sourceTree = "<group>"; };
+		AD18FE1D2890987100D4DDE9 /* ReloadBooksToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadBooksToastView.swift; sourceTree = "<group>"; };
 		AD43001B2870824B005D64B8 /* GetBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBooks.swift; sourceTree = "<group>"; };
 		AD430022287090AD005D64B8 /* boissibook--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "boissibook--iOS--Info.plist"; sourceTree = "<group>"; };
 		AD4300232871BB37005D64B8 /* TabMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenu.swift; sourceTree = "<group>"; };
@@ -126,6 +140,36 @@
 				D4F1E2BA28830324006D8D9D /* BookReview.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		AD18FE0F28901FCB00D4DDE9 /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				ADB50B4A2875DB1400DFA47F /* CarouselView.swift */,
+				ADB50B4D2875DC4300DFA47F /* Carousel.swift */,
+				AD5A593E287A1A0300C462F0 /* CarouselBookView.swift */,
+				AD18FE0D28901A2F00D4DDE9 /* CarouselElement.swift */,
+			);
+			path = Carousel;
+			sourceTree = "<group>";
+		};
+		AD18FE10289025A600D4DDE9 /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				AD18FE11289025BF00D4DDE9 /* MyBookView.swift */,
+			);
+			path = Book;
+			sourceTree = "<group>";
+		};
+		AD18FE1428903CBB00D4DDE9 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				AD18FE1528903CD200D4DDE9 /* ErrorToastView.swift */,
+				AD18FE17289042FF00D4DDE9 /* ToastModifier.swift */,
+				AD18FE1B289062C700D4DDE9 /* NoNetworkToastView.swift */,
+				AD18FE1D2890987100D4DDE9 /* ReloadBooksToastView.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		AD43001928708227005D64B8 /* Services */ = {
@@ -217,14 +261,14 @@
 		ADEBA9C8286E35330083D038 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AD18FE1428903CBB00D4DDE9 /* Toast */,
+				AD18FE10289025A600D4DDE9 /* Book */,
+				AD18FE0F28901FCB00D4DDE9 /* Carousel */,
 				ADEBA9D328703F640083D038 /* BookCellView.swift */,
 				ADAA56A62870455200A2B960 /* CircleView.swift */,
 				ADC20A3A2872BDC800FF7206 /* BookCellViewAdd.swift */,
 				ADB50B442874E99E00DFA47F /* LoadingView.swift */,
-				ADB50B4A2875DB1400DFA47F /* CarouselView.swift */,
-				ADB50B4D2875DC4300DFA47F /* Carousel.swift */,
 				6424C1FEC41C6D00BD0902DD /* UIKLabel.swift */,
-				AD5A593E287A1A0300C462F0 /* CarouselBookView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,6 +279,7 @@
 				ADAA56AD28704DDB00A2B960 /* AudioPlayer.swift */,
 				6424C152B951A858179A762B /* StringHtml.swift */,
 				AD5A593C2879FFA800C462F0 /* DebounceObject.swift */,
+				AD18FE1928904C6000D4DDE9 /* NetworkManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -341,23 +386,29 @@
 				ADEBA9BB286E2D8B0083D038 /* ContentView.swift in Sources */,
 				ADEBA9B9286E2D8B0083D038 /* boissibookApp.swift in Sources */,
 				ADEBA9CE286E39950083D038 /* BooksHome.swift in Sources */,
+				AD18FE18289042FF00D4DDE9 /* ToastModifier.swift in Sources */,
 				AD0D19B6287316E90023FB46 /* BookDto.swift in Sources */,
 				D4F11162287D6FC000E9618F /* PdfBookView.swift in Sources */,
 				ADB50B452874E99E00DFA47F /* LoadingView.swift in Sources */,
 				AD43002A2871BE5E005D64B8 /* SearchBooks.swift in Sources */,
 				AD43001C2870824B005D64B8 /* GetBooks.swift in Sources */,
+				AD18FE1A28904C6000D4DDE9 /* NetworkManager.swift in Sources */,
 				AD43002D2871C3E5005D64B8 /* SearchBookDto.swift in Sources */,
+				AD18FE1E2890987100D4DDE9 /* ReloadBooksToastView.swift in Sources */,
 				ADC20A3B2872BDC800FF7206 /* BookCellViewAdd.swift in Sources */,
 				ADAA56AE28704DDB00A2B960 /* AudioPlayer.swift in Sources */,
+				AD18FE1C289062C700D4DDE9 /* NoNetworkToastView.swift in Sources */,
 				ADAA56A42870420300A2B960 /* Home.swift in Sources */,
 				ADAA56A72870455200A2B960 /* CircleView.swift in Sources */,
 				AD5A593F287A1A0300C462F0 /* CarouselBookView.swift in Sources */,
 				ADC20A3E2872C1D200FF7206 /* AddBook.swift in Sources */,
+				AD18FE0E28901A2F00D4DDE9 /* CarouselElement.swift in Sources */,
 				AD0D19AF287310420023FB46 /* BookDetails.swift in Sources */,
 				AD5A593D2879FFA800C462F0 /* DebounceObject.swift in Sources */,
 				AD0D19BC287483420023FB46 /* DownloadBooks.swift in Sources */,
 				AD0D19B3287314BC0023FB46 /* Book.swift in Sources */,
 				D4F1E2BB28830324006D8D9D /* BookReview.swift in Sources */,
+				AD18FE12289025BF00D4DDE9 /* MyBookView.swift in Sources */,
 				ADEBA9D428703F640083D038 /* BookCellView.swift in Sources */,
 				ADB50B4E2875DC4300DFA47F /* Carousel.swift in Sources */,
 				AD4300242871BB37005D64B8 /* TabMenu.swift in Sources */,
@@ -367,6 +418,7 @@
 				6424CC82C08A6C586E3CE56C /* GetBookFiles.swift in Sources */,
 				6424C3B1D0F6855EF598CCA4 /* BookFileDto.swift in Sources */,
 				6424C75D0015B7670563AA3F /* BookFile.swift in Sources */,
+				AD18FE1628903CD200D4DDE9 /* ErrorToastView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
