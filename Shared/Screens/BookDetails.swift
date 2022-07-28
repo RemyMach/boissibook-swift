@@ -28,6 +28,9 @@ struct BookDetails: View {
     @State private var bookAvailability: BookAvailability = BookAvailability.NotAvailable;
 
     @State private var bookFile: BookFile? = nil;
+    
+    @State private var requestIsLoading: Bool = false;
+    
     @AppStorage("booksFiles") var booksFileStorage: Data?;
 
     let screenWidth = UIScreen.main.bounds.size.width
@@ -66,15 +69,16 @@ struct BookDetails: View {
                     print("error in decode booksFileStorage")
                     return
                 }
+                print(booksFilesDecoded)
                 booksFilesDecoded.removeAll(where: { $0.bookId == bookFile.bookId })
                 booksFilesDecoded.append(bookFile)
                 print(booksFilesDecoded)
-                guard let bookFilesEncode = try? JSONEncoder().encode([bookFile]) else {
+                guard let bookFilesEncode = try? JSONEncoder().encode(booksFilesDecoded) else {
                     print("error in encode bookFile")
                     return
                 }
                 self.bookFile = bookFile
-                booksFileStorage = try JSONEncoder().encode(bookFilesEncode)
+                booksFileStorage = bookFilesEncode
             } else {
                 guard let bookFilesEncode = try? JSONEncoder().encode([bookFile]) else {
                     print("error in encode bookFile")
@@ -193,13 +197,16 @@ struct BookDetails: View {
                                     print(error)
                                 }
                             }
+                            .buttonStyle(.bordered)
+                            .buttonBorderShape(.roundedRectangle(radius: 20))
+                            .frame(height: 48)
+                            .foregroundColor(.blue)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                        }else {
+                            LoadingView()
                         }
-                        .buttonStyle(.bordered)
-                        .buttonBorderShape(.roundedRectangle(radius: 20))
-                        .frame(height: 48)
-                        .foregroundColor(.blue)
-                        .foregroundColor(.blue)
-                        .padding(.horizontal, 12)
+                        
                     } else {
                         Text("Pas de téléchargement disponible")
                             .foregroundColor(.gray)

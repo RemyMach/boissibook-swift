@@ -13,6 +13,8 @@ struct Carousel: View {
     
     @Binding var bookFiles: [BookFile]
     
+    let mode: String
+    
     
     func getScale(proxy: GeometryProxy) -> CGFloat {
 //        guard let rootView = UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.rootViewController?.view else { return 1}
@@ -35,24 +37,24 @@ struct Carousel: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 16) {
                 ForEach(books, id: \.id) { book in
-                    GeometryReader { proxy in
-                        let scale = getScale(proxy: proxy)
-                        let bookFile = self.bookFiles.first(where: {$0.bookId == book.id})
-                        //TODO mettre les résultats inverse quand on aura un storage de ce qui est téléchargé
-                        if(bookFiles.contains(where: {$0.id == book.id})) {
-                            NavigationLink(
-                                destination: CarouselBookView(book: book, bookFile: bookFile, scale: scale), //calculateTheDestinationView(book: book, scale: scale),
-                               label: {
-                                   CarouselBookView(book: book, bookFile: bookFile, scale: scale)
-                                })
-                        } else {
-                            CarouselBookView(book: book,bookFile: bookFile, scale: scale)
+                        GeometryReader { proxy in
+                            let bookFile = self.bookFiles.first(where: {$0.bookId == book.id})
+                            let scale = getScale(proxy: proxy)
+                            //TODO mettre les résultats inverse quand on aura un storage de ce qui est téléchargé
+                            if(bookFiles.contains(where: {$0.id == book.id})) {
+                                NavigationLink(
+                                    destination: CarouselBookView(book: book, bookFile: bookFile, scale: scale), //calculateTheDestinationView(book: book, scale: scale),
+                                   label: {
+                                       CarouselBookView(book: book, bookFile: bookFile, scale: scale)
+                                    })
+                            } else {
+                                CarouselBookView(book: book,bookFile: bookFile, scale: scale)
+                            }
+                                
                         }
-                            
-                    }
-                    .frame(width: 125, height: 290)
-                    .padding(.horizontal, 32)
-                    .padding(.vertical, 32)
+                        .frame(width: 125, height: 290)
+                        .padding(.horizontal, 32)
+                        .padding(.vertical, 32)
                 }
                 Spacer()
                     .frame(width: 16)
@@ -90,7 +92,7 @@ struct Carousel_Previews: PreviewProvider {
     @State static var bookFiles: [BookFile] = []
     @State static var books: [Book] = []
     static var previews: some View {
-        Carousel(books: $books, bookFiles: $bookFiles)
+        Carousel(books: $books, bookFiles: $bookFiles, mode: "Récents")
     }
 }
 
