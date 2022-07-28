@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoadingView: View {
+struct LoadingView: some View {
     @State private var value: Double = 50
     var body: some View {
         VStack {

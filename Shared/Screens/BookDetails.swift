@@ -203,7 +203,7 @@ struct BookDetails: View {
                             .foregroundColor(.blue)
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
-                        }else {
+                        } else {
                             LoadingView()
                         }
                         
